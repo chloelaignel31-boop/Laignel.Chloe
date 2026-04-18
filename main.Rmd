@@ -105,7 +105,7 @@ table_final
 
 # ---- 4. EXPORT TO PDF ----
 
-pdf("figures/Table_2_Comparison_Included_Excluded.pdf", width = 7, height = 5)
+pdf("figures/Table_2_Comparison_Included_Excluded.pdf", width = 9, height = 7)
 
 grid.arrange(
   textGrob(
