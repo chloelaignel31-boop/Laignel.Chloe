@@ -40,7 +40,7 @@ str(excluded_data)
 ```
 The cleaned datasets were imported into R for statistical analysis. Separate datasets were used for included patients, forming the main analytical sample, and excluded patients, allowing the evaluation of potential selection bias.
 
-# Step 9. Descriptive statistics of included and excluded patients
+# Step 9. Descriptive statistics of included and excluded patients at baseline
 
 ```{r table-comparison}
 
