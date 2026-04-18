@@ -38,8 +38,51 @@ excluded_data <- read_excel("data/data_excluded.xlsx")
 str(included_data)
 str(excluded_data)
 ```
+The cleaned datasets were imported into R for statistical analysis. Separate datasets were used for included patients, forming the main analytical sample, and excluded patients, allowing the evaluation of potential selection bias.
 
+# Step 9. Descriptive statistics of included and excluded patients
 
+```{r descriptive-stats}
+
+# Function to compute descriptive statistics
+describe_variable <- function(x) {
+  c(
+    Mean = round(mean(x, na.rm = TRUE), 1),
+    SD = round(sd(x, na.rm = TRUE), 1),
+    Median = round(median(x, na.rm = TRUE), 1),
+    Q1 = round(quantile(x, 0.25, na.rm = TRUE), 1),
+    Q3 = round(quantile(x, 0.75, na.rm = TRUE), 1)
+  )
+}
+
+# Variables to compare (baseline)
+vars <- c("age", "weight_kg", "height_cm", "bmi_kg_cm2",
+          "6minwt_distance_traveled_m_before",
+          "pedsql_totalself_before")
+
+# Compute statistics
+included_stats <- as.data.frame(t(sapply(included_data[vars], describe_variable)))
+excluded_stats <- as.data.frame(t(sapply(excluded_data[vars], describe_variable)))
+
+# Add group column
+included_stats$Group <- "Included"
+excluded_stats$Group <- "Excluded"
+
+# Combine tables
+final_stats <- rbind(included_stats, excluded_stats)
+
+# Display final table
+final_stats
+
+# Create PDF
+pdf("figures/Table_2_descriptive_stats_included_vs_excluded.pdf", width = 8, height = 4)
+
+# Convert table to graphic
+gridExtra::grid.table(final_stats)
+
+# Close PDF
+dev.off()
+```
 
 
 
