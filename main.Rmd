@@ -42,47 +42,55 @@ The cleaned datasets were imported into R for statistical analysis. Separate dat
 
 # Step 9. Descriptive statistics of included and excluded patients
 
-```{r descriptive-stats}
-
-# Function to compute descriptive statistics
-describe_variable <- function(x) {
-  c(
-    Mean = round(mean(x, na.rm = TRUE), 1),
-    SD = round(sd(x, na.rm = TRUE), 1),
-    Median = round(median(x, na.rm = TRUE), 1),
-    Q1 = round(quantile(x, 0.25, na.rm = TRUE), 1),
-    Q3 = round(quantile(x, 0.75, na.rm = TRUE), 1)
+```{r import-data}
+# Function to format Mean ± SD
+mean_sd <- function(x) {
+  paste0(
+    round(mean(x, na.rm=TRUE),1), " ± ",
+    round(sd(x, na.rm=TRUE),1)
   )
 }
 
-# Variables to compare (baseline)
+# Function to format Median [IQR]
+median_iqr <- function(x) {
+  paste0(
+    round(median(x, na.rm=TRUE),1), " [",
+    round(quantile(x,0.25,na.rm=TRUE),1), "-",
+    round(quantile(x,0.75,na.rm=TRUE),1), "]"
+  )
+}
+
+# Variables
 vars <- c("age", "weight_kg", "height_cm", "bmi_kg_cm2",
           "6minwt_distance_traveled_m_before",
           "pedsql_totalself_before")
 
-# Compute statistics
-included_stats <- as.data.frame(t(sapply(included_data[vars], describe_variable)))
-excluded_stats <- as.data.frame(t(sapply(excluded_data[vars], describe_variable)))
+# Build table
+table_final <- data.frame(
+  Variable = vars,
+  Included_MeanSD = sapply(included_data[vars], mean_sd),
+  Excluded_MeanSD = sapply(excluded_data[vars], mean_sd),
+  Included_MedianIQR = sapply(included_data[vars], median_iqr),
+  Excluded_MedianIQR = sapply(excluded_data[vars], median_iqr)
+)
 
-# Add group column
-included_stats$Group <- "Included"
-excluded_stats$Group <- "Excluded"
+table_final
 
-# Combine tables
-final_stats <- rbind(included_stats, excluded_stats)
+library(gridExtra)
+library(grid)
 
-# Display final table
-final_stats
+pdf("figures/Table_2_Comparison_Included_Excluded.pdf", width=10, height=5)
 
-# Create PDF
-pdf("figures/Table_2_descriptive_stats_included_vs_excluded.pdf", width = 8, height = 4)
+grid.arrange(
+  textGrob("Table 2. Comparison of included and excluded patients",
+           gp=gpar(fontsize=12, fontface="bold")),
+  tableGrob(table_final),
+  ncol=1
+)
 
-# Convert table to graphic
-gridExtra::grid.table(final_stats)
-
-# Close PDF
 dev.off()
 ```
+
 
 
 
