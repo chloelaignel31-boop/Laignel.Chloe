@@ -1,6 +1,6 @@
 ---
-title: "Marfan_Project"
-author: "Chloé Laignel"
+title: "Data analysis project of the Marfan Power study as part of the teaching unit Movement Analysis"
+author: "Chloé Laignel-Granier"
 date: "2026-04-14"
 output: html_document
 ---
