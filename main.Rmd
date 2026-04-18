@@ -70,7 +70,7 @@ median_iqr <- function(x) {
 # Variables
 
 vars <- c("age", "weight_kg", "height_cm", "bmi_kg_cm2",
-          "6minwt_distance_traveled_m_before",
+          "6minwt_distance_traveled_m_before","vat_before",
           "pedsql_totalself_before")
 
 # Build clean table
@@ -97,6 +97,7 @@ table_final$Variable <- c(
   "Height (cm)",
   "BMI (kg/m²)",
   "6MWT distance (m)",
+  "VAT",
   "PedsQL score"
 )
 
@@ -105,11 +106,11 @@ table_final
 
 # Export to PDF
 
-pdf("figures/Table_2_Comparison_Included_Excluded.pdf", width = 8, height = 7)
+pdf("figures/Table_2_Comparison_Included_Excluded at baseline.pdf", width = 8, height = 7)
 
 grid.arrange(
   textGrob(
-    "Table 2. Comparison of included and excluded patients",
+    "Table 2. Comparison of patients included and excluded at baseline",
     gp = gpar(fontsize = 12, fontface = "bold")
   ),
   tableGrob(table_final, rows = NULL),
