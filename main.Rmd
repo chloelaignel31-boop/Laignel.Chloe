@@ -2,16 +2,47 @@
 title: "Data analysis project of the Marfan Power study as part of the teaching unit Movement Analysis"
 author: "Chloé Laignel-Granier"
 date: "2026-04-14"
-output: html_document
+output:
+  html_document:
+    theme: readable
+    toc: true
+    toc_float: true
+    highlight: tango
+    code_folding: hide
+    css: style.css
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Introduction
+
+Following preprocessing in Python, cleaned datasets were exported to R for statistical analysis.
+
+Two datasets were used: included patients for the main analysis and excluded patients to assess potential bias.
+
+All statistical analyses were performed in R.
+
+# Step 8. Import datasets in R
+
+```{r import-data}
+# Load package
+library(readxl)
+
+# Import datasets
+included_data <- read_excel("data/data_clean.xlsx")
+excluded_data <- read_excel("data/data_excluded.xlsx")
+
+# Check structure
+str(included_data)
+str(excluded_data)
 ```
 
 
 
-```{r cars}
-summary(cars)
-```
+
+
+
+
 
