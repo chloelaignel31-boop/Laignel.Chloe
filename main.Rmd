@@ -105,7 +105,11 @@ table_final
 
 # ---- 4. EXPORT TO PDF ----
 
-pdf("figures/Table_2_Comparison_Included_Excluded.pdf", width = 9, height = 7)
+n_rows <- nrow(table_final)
+
+pdf("figures/Table_2_Comparison_Included_Excluded.pdf",
+    width = 8,
+    height = 1 + n_rows * 0.5)
 
 grid.arrange(
   textGrob(
