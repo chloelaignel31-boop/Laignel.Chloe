@@ -48,7 +48,7 @@ The cleaned datasets were imported into R for statistical analysis. Separate dat
 library(gridExtra)
 library(grid)
 
-# ---- 1. FUNCTIONS ----
+# Functions
 
 # Mean ± SD
 mean_sd <- function(x) {
@@ -67,13 +67,13 @@ median_iqr <- function(x) {
   )
 }
 
-# ---- 2. VARIABLES ----
+# Variables
 
 vars <- c("age", "weight_kg", "height_cm", "bmi_kg_cm2",
           "6minwt_distance_traveled_m_before",
           "pedsql_totalself_before")
 
-# ---- 3. BUILD CLEAN TABLE ----
+# Build clean table
 
 table_final <- data.frame(
   Variable = vars,
@@ -90,7 +90,7 @@ table_final <- data.frame(
 # Remove row names
 rownames(table_final) <- NULL
 
-# Rename variables (clean labels)
+# Rename variables 
 table_final$Variable <- c(
   "Age (years)",
   "Weight (kg)",
@@ -103,29 +103,64 @@ table_final$Variable <- c(
 # Display table in RMarkdown
 table_final
 
-# ---- 4. EXPORT TO PDF ----
+# Export to PDF
 
-n_rows <- nrow(table_final)
-
-pdf("figures/Table_2_Comparison_Included_Excluded.pdf",
-    width = 8,
-    height = 1 + n_rows * 0.5)
+pdf("figures/Table_2_Comparison_Included_Excluded.pdf", width = 8, height = 7)
 
 grid.arrange(
   textGrob(
     "Table 2. Comparison of included and excluded patients",
     gp = gpar(fontsize = 12, fontface = "bold")
   ),
-  tableGrob(table_final),
-  ncol = 1
+  tableGrob(table_final, rows = NULL),
+  ncol = 1,
+  heights = c(0.3, 5) 
 )
-
 dev.off()
+
 ```
 
+Descriptive statistics were computed for included and excluded patients to assess potential selection bias. Continuous variables were summarized using mean ± standard deviation and median [IQR].
+
+A summary table was constructed to compare baseline characteristics between groups, with results formatted for clarity. The table was displayed in the R Markdown document and exported as a PDF for reporting.
+
+## Interpretation of Baseline Characteristics (Table 2)
+
+Baseline characteristics were compared between included and excluded patients to assess potential selection bias.
+
+Overall, the two groups appeared comparable across most variables. Age was slightly higher in excluded patients (13.8 ± 2.8 years) compared to included patients (12.4 ± 4.0 years), although the distributions overlapped substantially. Similarly, anthropometric measures such as weight, height, and BMI were broadly similar between groups, with no clinically meaningful differences observed.
+
+Baseline functional capacity, assessed by the 6-minute walk test (6MWT), was comparable between included and excluded patients (577.4 ± 55.4 m vs. 597.4 ± 24.6 m), suggesting no major difference in physical performance at baseline.
+
+Quality of life scores (PedsQL) also showed overlapping distributions, although variability appeared greater in excluded patients.
+
+Overall, these findings suggest that excluded patients were not markedly different from included patients at baseline, indicating a limited risk of major selection bias.
+
+
+# Step 10. Comparison of 6MWT Before and After Intervention.
+
+A paired comparison of 6-minute walk distance before and after the intervention was performed in included patients.
+
+H0: There is no difference in 6-minute walk distance before and after the intervention.
+
+H1: There is a difference in 6-minute walk distance before and after the intervention.
 
 
 
+```{r wilcoxon-test}
 
+# Paired Wilcoxon test
+wilcox_test <- wilcox.test(
+  included_data$`6minwt_distance_traveled_m_before`,
+  included_data$`6minwt_distance_traveled_m_after`,
+  paired = TRUE
+)
 
+wilcox_test
+```
+## Interpretation of Wilcoxon test
+
+A statistically significant difference was observed between 6-minute walk distance before and after the intervention (Wilcoxon signed-rank test, V = 40, p = 0.016).
+
+This finding suggests that the intervention was associated with a significant change in functional capacity.
 
