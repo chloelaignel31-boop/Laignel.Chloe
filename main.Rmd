@@ -1,5 +1,5 @@
 ---
-title: "Data analysis project of the Marfan Power study as part of the teaching unit Movement Analysis"
+title: "Data analysis project of the Marfan Power study as part of the teaching unit Movement Analysis, part (2/2)"
 author: "Chloé Laignel-Granier"
 date: "2026-04-14"
 output:
@@ -119,7 +119,7 @@ table_final$Variable <- c(
   "PedsQL score (0-100)"
 )
 
-# ---- FISHER TEST FOR SEX ----
+# Fisher test for sex 
 
 fisher_test <- fisher.test(
   table(
@@ -133,7 +133,7 @@ fisher_test <- fisher.test(
 
 p_sexe <- round(fisher_test$p.value, 3)
 
-# ---- COUNTS ----
+# Counts
 sexe_included <- table(included_data$sexe)
 sexe_excluded <- table(excluded_data$sexe)
 
@@ -141,7 +141,7 @@ sexe_excluded <- table(excluded_data$sexe)
 sexe_included_txt <- paste(names(sexe_included), sexe_included, collapse = " / ")
 sexe_excluded_txt <- paste(names(sexe_excluded), sexe_excluded, collapse = " / ")
 
-# ---- ADD ROW TO TABLE ----
+# Add row to table
 table_final <- rbind(
   table_final,
   data.frame(
@@ -184,7 +184,9 @@ Overall, the two groups appeared comparable across most variables. Age was sligh
 
 Baseline functional capacity, assessed by the 6-minute walk test (6MWT), was comparable between included and excluded patients (577.4 ± 55.4 m vs. 597.4 ± 24.6 m), suggesting no major difference in physical performance at baseline.
 
-Quality of life scores (PedsQL) also showed overlapping distributions, although variability appeared greater in excluded patients.
+Quality of life scores (PedsQL) also showed overlapping distributions between groups, although greater variability was observed among excluded patients.
+
+Sex distribution was similar between included (F 6 / M 14) and excluded patients (F 5 / M 3), with no statistically significant difference (Fisher’s exact test, p = 0.200).
 
 Overall, these findings suggest that excluded patients were not markedly different from included patients at baseline, indicating a limited risk of major selection bias.
 
