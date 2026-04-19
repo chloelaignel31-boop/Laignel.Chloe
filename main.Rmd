@@ -193,6 +193,8 @@ Overall, these findings suggest that excluded patients were not markedly differe
 
 # Step 10. Comparison of 6MWT Before and After Intervention.
 
+Due to the small sample size and the potential non-normal distribution of the data, a non-parametric paired Wilcoxon signed-rank test was used to compare 6-minute walk distance before and after the intervention.
+
 A paired comparison of 6-minute walk distance before and after the intervention was performed in included patients.
 
 H0: There is no difference in 6-minute walk distance before and after the intervention.
@@ -207,14 +209,15 @@ H1: There is a difference in 6-minute walk distance before and after the interve
 wilcox_test <- wilcox.test(
   included_data$`6minwt_distance_traveled_m_before`,
   included_data$`6minwt_distance_traveled_m_after`,
-  paired = TRUE
+  paired = TRUE,
+  exact = FALSE,
+  conf.int = TRUE
 )
-
 wilcox_test
 ```
 ## Interpretation of Wilcoxon test
 
-A statistically significant difference was observed between 6-minute walk distance before and after the intervention (Wilcoxon signed-rank test, V = 40, p = 0.016).
+A paired Wilcoxon signed-rank test revealed a statistically significant difference in 6-minute walk distance before and after the intervention (V = 40, p = 0.016).
 
-This finding suggests that the intervention was associated with a significant change in functional capacity.
+The median paired difference indicated an increase in 6MWT distance following the intervention. The 95% confidence interval for the median difference did not include zero, supporting the statistical significance of this change.
 
