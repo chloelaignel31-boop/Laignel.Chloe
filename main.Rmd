@@ -94,16 +94,16 @@ p_values <- sapply(vars, function(var) {
 
 table_final <- data.frame(
   Variable = vars,
-  Included = paste0(
+  Included = paste(
   sapply(included_data[vars], mean_sd),
-  if (knitr::is_html_output()) "<br>" else "\n",
-  sapply(included_data[vars], median_iqr)
+  sapply(included_data[vars], median_iqr),
+  sep = " / "
 ),
 
-Excluded = paste0(
+Excluded = paste(
   sapply(included_data[vars], mean_sd),
-  if (knitr::is_html_output()) "<br>" else "\n",
-  sapply(included_data[vars], median_iqr)
+  sapply(included_data[vars], median_iqr),
+  sep = " / "
 ),
   p_value = p_values
 )
@@ -157,10 +157,7 @@ table_final <- rbind(
 )
 
 # Display table in RMarkdown
-knitr::kable(
-  table_final,
-  caption = "Table 2. Comparison of included and excluded patients at baseline"
-)
+table_final
 
 # Export to PDF
 
