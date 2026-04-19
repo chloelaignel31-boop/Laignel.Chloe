@@ -80,6 +80,23 @@ vars <- c("age", "weight_kg", "height_cm", "bmi_kg_cm2",
           "6minwt_distance_traveled_m_before","vat_before",
           "pedsql_totalself_before")
 
+# p-values
+
+p_values <- sapply(vars, function(var) {
+  
+  x <- included_data[[var]]
+  y <- excluded_data[[var]]
+  
+  # Remove NA
+  x <- x[!is.na(x)]
+  y <- y[!is.na(y)]
+  
+  # Quantitative → Mann-Whitney
+  test <- wilcox.test(x, y)
+  
+  return(round(test$p.value, 3))
+})
+
 # Build clean table
 
 table_final <- data.frame(
@@ -91,7 +108,8 @@ table_final <- data.frame(
   Excluded = paste0(
     sapply(excluded_data[vars], mean_sd), "\n",
     sapply(excluded_data[vars], median_iqr)
-  )
+  ),
+  p_value = p_values
 )
 
 # Remove row names
@@ -104,8 +122,8 @@ table_final$Variable <- c(
   "Height (cm)",
   "BMI (kg/m²)",
   "6MWT distance (m)",
-  "VAT",
-  "PedsQL score"
+  "VAT (% predicted)",
+  "PedsQL score (0-100)"
 )
 
 # Display table in RMarkdown
