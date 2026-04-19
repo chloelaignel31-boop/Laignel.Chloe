@@ -214,10 +214,59 @@ wilcox_test <- wilcox.test(
   conf.int = TRUE
 )
 wilcox_test
+
+# Viewing individual changes at a 6-minute walking distance
+
+library(ggplot2)
+
+# Create plot
+p <- ggplot(included_data, aes(x = delta_6mwt)) +
+  geom_histogram(bins = 10, fill = "lightgrey", color = "black") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  xlab("Change in 6-Minute Walk Distance (m)") +
+  ylab("Number of patients") +
+  ggtitle("Figure 3. Histogram of Individual Changes in the 6-Minute Walk Test") +
+  theme_minimal()
+
+# Display
+p
+
+# Save as PDF
+ggsave(
+  filename = "figures/Figure_3_Histogram_of_Individual_Changes_in_the_6-Minute_Walk_Test.pdf",
+  plot = p,
+  width = 6,
+  height = 4
+)
 ```
+
 ## Interpretation of Wilcoxon test
 
 A paired Wilcoxon signed-rank test revealed a statistically significant difference in 6-minute walk distance before and after the intervention (V = 40, p = 0.016).
 
 The median paired difference indicated an increase in 6MWT distance following the intervention. The 95% confidence interval for the median difference did not include zero, supporting the statistical significance of this change.
+
+The distribution of individual changes in 6-minute walk distance is shown in Figure 3.
+
+Most patients exhibited a positive change in 6MWT distance, indicating an overall improvement following the intervention. Only a small number of patients showed a decrease in performance.
+
+The distribution appears slightly right-skewed, with some patients demonstrating large improvements, while a few showed minimal or negative changes. The dashed red line at zero highlights the threshold between improvement and decline.
+
+Overall, this graphical representation supports the results of the Wilcoxon test, confirming a general increase in functional capacity after the intervention.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
 
