@@ -113,11 +113,11 @@ table_final
 
 # Export to PDF
 
-pdf("figures/Table_2_Comparison_Included_Excluded.pdf", width = 8, height = 7)
+pdf("figures/Table_2_Comparison_Included_Excluded at baseline.pdf", width = 8, height = 7)
 
 grid.arrange(
   textGrob(
-    "Table 2. Comparison of included and excluded patients",
+    "Table 2. Comparison of included and excluded patients at baseline",
     gp = gpar(fontsize = 12, fontface = "bold")
   ),
   tableGrob(table_final, rows = NULL),
