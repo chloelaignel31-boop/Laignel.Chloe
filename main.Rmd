@@ -41,6 +41,13 @@ str(excluded_data)
 The cleaned datasets were imported into R for statistical analysis. Separate datasets were used for included patients, forming the main analytical sample, and excluded patients, allowing the evaluation of potential selection bias.
 
 # Step 9. Descriptive statistics of included and excluded patients at baseline
+```{r}
+# Fix type for excluded data
+excluded_data$`6minwt_distance_traveled_m_after` <- as.numeric(excluded_data$`6minwt_distance_traveled_m_after`)
+excluded_data$vat_after <- as.numeric(excluded_data$vat_after)
+excluded_data$pedsql_totalself_after <- as.numeric(excluded_data$pedsql_totalself_after)
+```
+
 
 ```{r table-comparison}
 
@@ -70,24 +77,8 @@ median_iqr <- function(x) {
 # Variables
 
 vars <- c("age", "weight_kg", "height_cm", "bmi_kg_cm2",
-          "6minwt_distance_traveled_m_before","vat_before",
+          "6minwt_distance_traveled_m_before",
           "pedsql_totalself_before")
-# p_values
-
-p_values <- sapply(vars, function(var) {
-  
-  x <- included_data[[var]]
-  y <- excluded_data[[var]]
-  
-  # Remove NA
-  x <- x[!is.na(x)]
-  y <- y[!is.na(y)]
-  
-  # Quantitative → Mann-Whitney
-  test <- wilcox.test(x, y)
-  
-  return(round(test$p.value, 3))
-})
 
 # Build clean table
 
@@ -101,7 +92,7 @@ table_final <- data.frame(
     sapply(excluded_data[vars], mean_sd), "\n",
     sapply(excluded_data[vars], median_iqr)
   ),
-  p_value = p_values
+  p_value = NA 
 )
 
 # Remove row names
@@ -114,20 +105,57 @@ table_final$Variable <- c(
   "Height (cm)",
   "BMI (kg/m²)",
   "6MWT distance (m)",
-  "VAT",
   "PedsQL score"
 )
 
 # Display table in RMarkdown
 table_final
 
+
+# ---- FISHER TEST (SEX) ----
+
+fisher_test <- fisher.test(
+  table(
+    sexe = c(included_data$sexe, excluded_data$sexe),
+    group = c(
+      rep("Included", nrow(included_data)),
+      rep("Excluded", nrow(excluded_data))
+    )
+  )
+)
+
+p_sexe <- round(fisher_test$p.value, 3)
+
+# Counts
+sexe_included <- table(included_data$sexe)
+sexe_excluded <- table(excluded_data$sexe)
+
+# Format text
+sexe_included_txt <- paste(names(sexe_included), sexe_included, collapse = " / ")
+sexe_excluded_txt <- paste(names(sexe_excluded), sexe_excluded, collapse = " / ")
+
+# Add row to table
+table_final <- rbind(
+  table_final,
+  data.frame(
+    Variable = "Sex (M/F)",
+    Included = sexe_included_txt,
+    Excluded = sexe_excluded_txt,
+    p_value = p_sexe,
+    stringsAsFactors = FALSE
+  )
+)
+
+# Display updated table
+table_final
+
 # Export to PDF
 
-pdf("figures/Table_2_Comparison_Included_Excluded at baseline.pdf", width = 8, height = 7)
+pdf("figures/Table_2_Comparison_Included_Excluded.pdf", width = 8, height = 7)
 
 grid.arrange(
   textGrob(
-    "Table 2. Comparison of patients included and excluded at baseline",
+    "Table 2. Comparison of included and excluded patients",
     gp = gpar(fontsize = 12, fontface = "bold")
   ),
   tableGrob(table_final, rows = NULL),
@@ -135,7 +163,6 @@ grid.arrange(
   heights = c(0.3, 5) 
 )
 dev.off()
-
 ```
 
 Descriptive statistics were computed for included and excluded patients to assess potential selection bias. Continuous variables were summarized using mean ± standard deviation and median [IQR].
