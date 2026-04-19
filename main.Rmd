@@ -254,8 +254,58 @@ The distribution appears slightly right-skewed, with some patients demonstrating
 
 Overall, this graphical representation supports the results of the Wilcoxon test, confirming a general increase in functional capacity after the intervention.
 
+# Step 11. Physical performance correlation – quality of life
 
+The association between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient, due to the non-normal distribution of the data.
 
+The analysis was performed between 6-minute walk distance and PedsQL score.
+
+```{r}
+# Spearman correlation
+cor_test <- cor.test(
+  included_data$`6minwt_distance_traveled_m_after`,
+  included_data$pedsql_totalself_after,
+  method = "spearman"
+)
+
+cor_test
+
+# Viewing
+library(ggplot2)
+
+# Create plot
+p_corr <- ggplot(included_data, aes(
+  x = `6minwt_distance_traveled_m_after`,
+  y = pedsql_totalself_after
+)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  xlab("6-Minute Walk Distance (m)") +
+  ylab("PedsQL Score (0–100)") +
+  ggtitle("Figure 4. Correlation Between Functional Capacity and Quality of Life") +
+  theme_minimal()
+
+p_corr
+
+# Export PDF
+ggsave(
+  "figures/Figure_4_Correlation_6MWT_PedsQL.pdf",
+  plot = p_corr,
+  width = 6,
+  height = 4
+)
+```
+## Interpretation of Spearman correlation
+
+A Spearman correlation analysis was performed to assess the relationship between functional capacity and quality of life.
+
+A weak positive correlation was observed between 6-minute walk distance and PedsQL score (Spearman’s rho = 0.19). However, this association was not statistically significant (p = 0.430).
+
+The scatter plot shows a slight upward trend, suggesting that higher functional capacity may be associated with better quality of life. Nevertheless, the wide dispersion of the data points indicates substantial variability between individuals.
+
+Overall, these results do not support a significant association between functional capacity and quality of life in this sample.
+
+This lack of statistical significance may be explained by the limited sample size and inter-individual variability.
 
 
 
