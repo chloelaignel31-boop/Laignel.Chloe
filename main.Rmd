@@ -77,7 +77,7 @@ median_iqr <- function(x) {
 # Variables
 
 vars <- c("age", "weight_kg", "height_cm", "bmi_kg_cm2",
-          "6minwt_distance_traveled_m_before",
+          "6minwt_distance_traveled_m_before","vat_before",
           "pedsql_totalself_before")
 
 # Build clean table
@@ -91,8 +91,7 @@ table_final <- data.frame(
   Excluded = paste0(
     sapply(excluded_data[vars], mean_sd), "\n",
     sapply(excluded_data[vars], median_iqr)
-  ),
-  p_value = NA 
+  )
 )
 
 # Remove row names
@@ -105,48 +104,11 @@ table_final$Variable <- c(
   "Height (cm)",
   "BMI (kg/m²)",
   "6MWT distance (m)",
+  "VAT",
   "PedsQL score"
 )
 
 # Display table in RMarkdown
-table_final
-
-
-# ---- FISHER TEST (SEX) ----
-
-fisher_test <- fisher.test(
-  table(
-    sexe = c(included_data$sexe, excluded_data$sexe),
-    group = c(
-      rep("Included", nrow(included_data)),
-      rep("Excluded", nrow(excluded_data))
-    )
-  )
-)
-
-p_sexe <- round(fisher_test$p.value, 3)
-
-# Counts
-sexe_included <- table(included_data$sexe)
-sexe_excluded <- table(excluded_data$sexe)
-
-# Format text
-sexe_included_txt <- paste(names(sexe_included), sexe_included, collapse = " / ")
-sexe_excluded_txt <- paste(names(sexe_excluded), sexe_excluded, collapse = " / ")
-
-# Add row to table
-table_final <- rbind(
-  table_final,
-  data.frame(
-    Variable = "Sex (M/F)",
-    Included = sexe_included_txt,
-    Excluded = sexe_excluded_txt,
-    p_value = p_sexe,
-    stringsAsFactors = FALSE
-  )
-)
-
-# Display updated table
 table_final
 
 # Export to PDF
