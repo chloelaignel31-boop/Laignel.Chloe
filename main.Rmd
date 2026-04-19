@@ -95,14 +95,16 @@ p_values <- sapply(vars, function(var) {
 table_final <- data.frame(
   Variable = vars,
   Included = paste0(
-  sapply(included_data[vars], mean_sd), "<br>",
+  sapply(included_data[vars], mean_sd),
+  if (knitr::is_html_output()) "<br>" else "\n",
   sapply(included_data[vars], median_iqr)
 ),
 
 Excluded = paste0(
-  sapply(excluded_data[vars], mean_sd), "<br>",
-  sapply(excluded_data[vars], median_iqr)
-  ),
+  sapply(included_data[vars], mean_sd),
+  if (knitr::is_html_output()) "<br>" else "\n",
+  sapply(included_data[vars], median_iqr)
+),
   p_value = p_values
 )
 
