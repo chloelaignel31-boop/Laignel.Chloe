@@ -101,8 +101,8 @@ table_final <- data.frame(
 ),
 
 Excluded = paste(
-  sapply(included_data[vars], mean_sd),
-  sapply(included_data[vars], median_iqr),
+  sapply(excluded_data[vars], mean_sd),
+  sapply(excluded_data[vars], median_iqr),
   sep = " / "
 ),
   p_value = p_values
