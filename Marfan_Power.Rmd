@@ -209,11 +209,10 @@ H1: There is a difference in 6-minute walk distance before and after the interve
 
 # Paired Wilcoxon test
 wilcox_test <- wilcox.test(
-  included_data$`6minwt_distance_traveled_m_before`,
   included_data$`6minwt_distance_traveled_m_after`,
+  included_data$`6minwt_distance_traveled_m_before`,
   paired = TRUE,
-  exact = FALSE,
-  conf.int = TRUE
+  exact = TRUE
 )
 wilcox_test
 
