@@ -24,7 +24,7 @@ Two datasets were used: included patients for the main analysis and excluded pat
 
 All statistical analyses were performed in R.
 
-# Step 8. Import datasets in R
+# Step 7. Import datasets clean in R
 
 ```{r import-data}
 # Load package
@@ -40,7 +40,134 @@ str(excluded_data)
 ```
 The cleaned datasets were imported into R for statistical analysis. Separate datasets were used for included patients, forming the main analytical sample, and excluded patients, allowing the evaluation of potential selection bias.
 
-# Step 9. Descriptive statistics of included and excluded patients at baseline
+# Step 8. Descriptive statistics of included and excluded patients at baseline
+
+```{r import-data}
+library(dplyr)
+library(gridExtra)
+library(grid)
+
+# Fonction descriptive
+describe <- function(x) {
+  data.frame(
+    Statistic = c("Mean", "SD", "Median", "Q1", "Q3"),
+    Value = c(
+      mean(x, na.rm = TRUE),
+      sd(x, na.rm = TRUE),
+      median(x, na.rm = TRUE),
+      quantile(x, 0.25, na.rm = TRUE),
+      quantile(x, 0.75, na.rm = TRUE)
+    )
+  )
+}
+
+vars <- c("age", "weight_kg", "height_cm", "bmi_kg_cm2",
+          "6minwt_distance_traveled_m_before",
+          "vat_before",
+          "pedsql_totalself_before")
+
+labels <- c(
+  "Age (years)",
+  "Weight (kg)",
+  "Height (cm)",
+  "BMI (kg/m²)",
+  "6MWT distance (m)",
+  "VAT (% predicted)",
+  "PedsQL score (0–100)"
+)
+
+table_list <- list()
+
+for(i in seq_along(vars)) {
+  
+  var <- vars[i]
+  
+  x <- included_data[[var]]
+  y <- excluded_data[[var]]
+  
+  # Remove NA (important pour le test)
+  x_clean <- x[!is.na(x)]
+  y_clean <- y[!is.na(y)]
+  
+  # Mann-Whitney
+  p_val <- round(wilcox.test(x_clean, y_clean)$p.value, 3)
+  
+  inc <- describe(x)
+  exc <- describe(y)
+  
+  df <- data.frame(
+    Variable = c(labels[i], rep("", 4)),
+    Statistic = inc$Statistic,
+    Included = round(inc$Value, 1),
+    Excluded = round(exc$Value, 1),
+    p_value = c(p_val, rep("", 4))
+  )
+  
+  table_list[[i]] <- df
+}
+
+table_final <- do.call(rbind, table_list)
+
+# ---- SEX ----
+p_sexe <- round(fisher.test(table(
+  c(included_data$sexe, excluded_data$sexe),
+  c(rep("Included", nrow(included_data)),
+    rep("Excluded", nrow(excluded_data)))
+))$p.value, 3)
+
+sexe_inc <- table(included_data$sexe)
+sexe_exc <- table(excluded_data$sexe)
+
+sex_df <- data.frame(
+  Variable = c("Sex (M/F)", rep("", length(sexe_inc)-1)),
+  Statistic = names(sexe_inc),
+  Included = as.numeric(sexe_inc),
+  Excluded = as.numeric(sexe_exc),
+  p_value = c(p_sexe, rep("", length(sexe_inc)-1))
+)
+
+table_final <- rbind(table_final, sex_df)
+
+table_final
+
+library(gridExtra)
+library(grid)
+
+# Ajuster hauteur automatiquement
+n_rows <- nrow(table_final)
+
+pdf(
+  "figures/Table_2_Comparison_of_included_and_excluded_patients_at_baseline.pdf",
+  width = 8,
+  height = 1 + n_rows * 0.3   
+)
+
+# Table sans quadrillage
+tg <- tableGrob(
+  table_final,
+  rows = NULL,
+  theme = ttheme_minimal(  
+    core = list(
+      fg_params = list(fontsize = 9)
+    ),
+    colhead = list(
+      fg_params = list(fontsize = 10, fontface = "bold")
+    )
+  )
+)
+
+grid.arrange(
+  textGrob(
+    "Table 2. Comparison of included and excluded patients at baseline",
+    gp = gpar(fontsize = 12, fontface = "bold")
+  ),
+  tg,
+  ncol = 1,
+  heights = c(0.2, 5)  
+)
+
+dev.off()
+```
 
 ```{r table-comparison}
 
