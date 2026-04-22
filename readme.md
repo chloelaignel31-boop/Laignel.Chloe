@@ -37,13 +37,15 @@ This approach differs from the original study design, which included multiple ti
 
 A structured data processing pipeline was implemented to ensure consistency, transparency, and reproducibility of the analyses.
 
-Following data import, variables were standardized and checked for consistency and data quality. The dataset was then prepared for analysis, including reshaping where appropriate and the computation of individual changes (Δ) in functional performance.
+Following data import in Python, variables were standardized and data quality checks were performed to ensure consistency. The dataset was then prepared for analysis, including the selection of patients with complete data and the computation of individual changes (Δ) in 6-minute walk distance (6MWT).
 
-An exploratory data analysis phase was conducted using graphical representations to assess data distribution and visualize individual trajectories prior to formal statistical testing.
+An exploratory data analysis phase was conducted in Python using graphical representations, including boxplots, individual trajectories, and distribution plots, to assess data distribution and visualize individual changes prior to formal statistical testing.
 
-The processed dataset was subsequently used for statistical analyses, including paired comparisons and correlation analyses performed in R.
+Descriptive statistics were also calculated to summarize central tendencies and individual responses.
 
-Overall, this pipeline ensured a coherent transition from data preprocessing to statistical analysis and interpretation.
+The processed dataset was subsequently exported to R for statistical analyses. These included paired comparisons of pre- and post-intervention values using the Wilcoxon test, as well as an exploratory correlation analysis between functional capacity and quality of life using Spearman’s correlation.
+
+Overall, this pipeline ensured a clear and coherent transition from data preprocessing and exploration in Python to statistical analysis and interpretation in R.
 
 ## Results
 ## Dicussion
