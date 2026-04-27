@@ -41,6 +41,51 @@ str(excluded_data)
 The cleaned datasets were imported into R for statistical analysis. Separate datasets were used for included patients, forming the main analytical sample, and excluded patients, allowing the evaluation of potential selection bias.
 
 # Step 8. Descriptive statistics of included and excluded patients at baseline
+```{r}
+# install.packages("gtsummary")
+library(gtsummary)
+library(dplyr)
+
+# Ajouter groupe
+included_data$group <- "Included"
+excluded_data$group <- "Excluded"
+
+data_combined <- bind_rows(included_data, excluded_data)
+
+# Tableau propre
+table_final <- data_combined %>%
+  select(
+    group,
+    age, weight_kg, height_cm, bmi_kg_cm2,
+    `6minwt_distance_traveled_m_before`,
+    pedsql_totalself_before,
+    sexe
+  ) %>%
+  tbl_summary(
+    by = group,
+    statistic = list(
+      all_continuous() ~ "{median} [{p25}–{p75}]",
+      all_categorical() ~ "{n} ({p}%)"
+    ),
+    digits = all_continuous() ~ 1
+  ) %>%
+  add_p(
+    test = list(
+      all_continuous() ~ "wilcox.test",
+      all_categorical() ~ "fisher.test"
+    )
+  ) %>%
+  bold_labels()
+
+table_final
+
+# Export to PDF
+library(gt)
+
+table_final %>%
+  as_gt() %>%
+  gtsave("figures/Table_2_clean.pdf")
+```
 
 ```{r import-data}
 library(dplyr)
