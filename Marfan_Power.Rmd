@@ -350,6 +350,7 @@ table_pedsql
 library(gridExtra)
 library(grid)
 
+rownames(table_pedsql) <- NULL
 n_rows <- nrow(table_pedsql)
 
 # Export table to PDF
