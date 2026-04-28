@@ -166,6 +166,25 @@ grid.arrange(
   heights = c(0.2, 5)  
 )
 
+library(gtable)
+
+# ---- ADD LINES BETWEEN VARIABLES ----
+
+# Trouver les lignes où une nouvelle variable commence
+var_rows <- which(table_final$Variable != "")
+
+for (i in var_rows) {
+  tg <- gtable::gtable_add_grob(
+    tg,
+    grobs = segmentsGrob(
+      x0 = 0, x1 = 1,
+      gp = gpar(lwd = 0.8, col = "grey60")  # ligne visible
+    ),
+    t = i + 1,  # +1 pour header
+    l = 1,
+    r = ncol(tg)
+  )
+}
 dev.off()
 ```
 Descriptive statistics were computed for included and excluded patients to assess potential selection bias. Continuous variables were summarized using mean ± standard deviation and median [IQR].
