@@ -156,25 +156,28 @@ tg <- tableGrob(
   )
 )
 
-
-# Add lines between variables 
-
 library(gtable)
 
+# Add lines between variables 
 var_rows <- which(table_final$Variable != "")
 
 for (i in var_rows) {
   tg <- gtable::gtable_add_grob(
     tg,
     grobs = segmentsGrob(
-      x0 = 0, x1 = 1,
-      gp = gpar(lwd = 0.8, col = "grey60") 
+      x0 = unit(0, "npc"),
+      x1 = unit(1, "npc"),
+      y0 = unit(0, "npc"),
+      y1 = unit(0, "npc"),
+      gp = gpar(lwd = 0.8, col = "grey50")
     ),
-    t = i + 1,  # +1 pour header
+    t = i + 1,
     l = 1,
-    r = ncol(tg)
+    r = ncol(tg),
+    clip = "off"
   )
 }
+
 grid.arrange(
   textGrob(
     "Table 2. Comparison of included and excluded patients at baseline",
