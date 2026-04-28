@@ -222,8 +222,7 @@ p <- ggplot(included_data, aes(x = delta_6mwt)) +
   ggtitle("Figure 3. Histogram of Individual Changes in the 6-Minute Walk Test") +
   theme_minimal()
 
-# Display
-p
+
 
 # Save as PDF
 ggsave(
