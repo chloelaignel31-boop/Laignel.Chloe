@@ -305,6 +305,7 @@ ggsave(
 )
 ```
 ## Table 3. Descriptive Statistics of PedsQL Scores Before and After the Intervention (Median and Interquartile Range)
+
 ```{r}
 library(dplyr)
 library(tidyr)
@@ -345,11 +346,22 @@ table_pedsql <- pedsql_data %>%
 table_pedsql
 
 # ---- Export table ----
+
+library(gridExtra)
+library(grid)
+
+n_rows <- nrow(table_pedsql)
+
+# Export table to PDF
 pdf(
   "figures/Table_3_Descriptive_Statistics_of_PedsQL.pdf",
   width = 8,
-  height = 1 + n_rows * 0.3   
+  height = 1 + n_rows * 0.4
 )
+
+grid.table(table_pedsql)
+
+dev.off()
 ```
 
 
