@@ -224,6 +224,7 @@ The histogram suggests a slightly right-skewed distribution, indicating that som
 Overall, these results indicate a significant improvement in functional capacity after the intervention, although with noticeable inter-individual variability.
 
 # Step 11. Visualization of the 6 dimensions of the PedsQL self-questionnaire after 6 months 
+
 ```{r}
 pedsql_long <- included_data %>%
   mutate(id = row_number()) %>% 
@@ -257,6 +258,7 @@ ggplot(pedsql_long, aes(x = Time, y = Score, group = id)) +
   geom_boxplot(aes(fill = Time), alpha = 0.3, width = 0.5, outlier.shape = NA) +
   facet_wrap(~Dimension) +
   theme_minimal()
+
 ```
 
 ```{r pedsql-plot}
