@@ -223,7 +223,71 @@ The histogram suggests a slightly right-skewed distribution, indicating that som
 
 Overall, these results indicate a significant improvement in functional capacity after the intervention, although with noticeable inter-individual variability.
 
-# Step 11. Physical performance correlation – quality of life
+# Step 11. Visualization of the 6 dimensions of the PedsQL self-questionnaire after 6 months 
+
+```{r pedsql-plot}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+pedsql_data <- included_data %>%
+  select(
+    pedsql_totalself_after,
+    pedsql_physiqueself_after,
+    pedsql_emotionself_after,
+    pedsql_relationself_after,
+    pedsql_ecoleself_after,
+    pedsql_psycosocialself_after
+  ) %>%
+  pivot_longer(cols = everything(),
+               names_to = "Dimension",
+               values_to = "Score") %>%
+  mutate(Dimension = recode(Dimension,
+    "pedsql_totalself_after" = "Total Score",
+    "pedsql_physiqueself_after" = "Physical",
+    "pedsql_emotionself_after" = "Emotional",
+    "pedsql_relationself_after" = "Social",
+    "pedsql_ecoleself_after" = "School",
+    "pedsql_psycosocialself_after" = "Psychosocial"
+  ))
+
+# Create boxplot with facets
+p_pedsql <- ggplot(pedsql_data, aes(x = Dimension, y = Score, fill = Dimension)) +
+  geom_boxplot(show.legend = FALSE) +
+  
+  # Facet (1 boxplot par dimension)
+  facet_wrap(~Dimension, nrow = 2) +
+  
+  xlab("") +
+  ylab("Score (0–100)") +
+  ggtitle("Figure 4. Distribution of PedsQL Scores Across Dimensions") +
+  
+  theme_minimal() +
+  theme(
+    strip.text = element_text(face = "bold"),   # titres des facets
+    axis.text.x = element_blank(),              # inutile maintenant
+    axis.ticks.x = element_blank()
+  )
+
+p_pedsql
+
+# Export PDF
+ggsave(
+  "figures/Figure_4_PedsQL_Dimensions.pdf",
+  plot = p_pedsql,
+  width = 8,
+  height = 6
+)
+```
+## Interpretation of PedsQL dimensions
+
+The boxplots show relatively high PedsQL scores across all dimensions, with moderate to substantial variability between individuals. Differences in dispersion are observed across dimensions, with some domains appearing more heterogeneous than others.
+
+These findings suggest that quality of life is a multidimensional construct, with varying patterns across its components. The observed variability highlights the influence of multiple factors on patient-reported outcomes, beyond a single domain.
+
+Overall, this descriptive analysis provides an overview of the distribution and heterogeneity of quality of life within the study population, prior to the assessment of its relationship with functional capacity.
+
+# Step 12. Physical performance correlation – quality of life
 
 The association between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient, due to the non-normal distribution of the data.
 
@@ -251,14 +315,14 @@ p_corr <- ggplot(included_data, aes(
   geom_smooth(method = "loess", se = TRUE) +
   xlab("6-Minute Walk Distance (m)") +
   ylab("PedsQL Score (0–100)") +
-  ggtitle("Figure 4. Correlation Between Quality of Life and Functional Capacity measured at 6mwt ") +
+  ggtitle("Figure 5. Correlation Between Quality of Life and Functional Capacity measured at 6mwt ") +
   theme_minimal()
 
 p_corr
 
 # Export PDF
 ggsave(
-  "figures/Figure_4_Correlation_PedsQL_6MWT.pdf",
+  "figures/Figure_5_Correlation_PedsQL_6MWT.pdf",
   plot = p_corr,
   width = 8,
   height = 6
@@ -266,15 +330,15 @@ ggsave(
 ```
 ## Interpretation of Spearman correlation
 
-A Spearman correlation analysis was performed to assess the relationship between functional capacity and quality of life.
+The scatter plot does not show a clear relationship between 6-minute walk distance and PedsQL score. Although a slight upward trend can be visually suggested, the data points are widely dispersed across the range of values.
 
-A weak positive correlation was observed between 6-minute walk distance and PedsQL score (Spearman’s rho = 0.19). However, this association was not statistically significant (p = 0.430).
+The loess smoothing curve remains relatively flat, with only minor variations, and does not indicate a consistent or meaningful pattern of association. In addition, the wide confidence interval reflects a high level of uncertainty and substantial inter-individual variability.
 
-The scatter plot shows a slight upward trend, suggesting that higher functional capacity may be associated with better quality of life. Nevertheless, the wide dispersion of the data points indicates substantial variability between individuals.
+These observations suggest that any apparent trend should be interpreted with caution. The graphical representation alone does not provide strong evidence of an association between functional capacity and quality of life.
 
-Overall, these results do not support a significant association between functional capacity and quality of life in this sample.
+This is consistent with the statistical analysis, which showed a weak and non-significant correlation (Spearman’s rho = 0.19, p = 0.43).
 
-This lack of statistical significance may be explained by the limited sample size and inter-individual variability.
+Overall, the results do not support a meaningful relationship between 6MWT performance and quality of life in this sample.
 
 # Conclusion
 
