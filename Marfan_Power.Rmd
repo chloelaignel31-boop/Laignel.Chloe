@@ -209,43 +209,19 @@ wilcox_test <- wilcox.test(
 )
 wilcox_test
 
-# Viewing individual changes at a 6-minute walking distance
-
-library(ggplot2)
-
-# Create plot
-p <- ggplot(included_data, aes(x = delta_6mwt)) +
-  geom_histogram(bins = 10, fill = "lightgrey", color = "black") +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
-  xlab("Change in 6-Minute Walk Distance (m)") +
-  ylab("Number of patients") +
-  ggtitle("Figure 3. Histogram of Individual Changes in the 6-Minute Walk Test") +
-  theme_minimal()
-
-
-
-# Save as PDF
-ggsave(
-  filename = "figures/Figure_3_Histogram_of_Individual_Changes_in_the_6-Minute_Walk_Test.pdf",
-  plot = p,
-  width = 6,
-  height = 4
-)
 ```
 
 ## Interpretation of Wilcoxon test
 
-A paired Wilcoxon signed-rank test revealed a statistically significant difference in 6-minute walk distance before and after the intervention (V = 40, p = 0.016).
+A paired Wilcoxon signed-rank test showed a statistically significant difference in 6-minute walk distance between pre- and post-intervention measurements (p = 0.016).
 
-The median paired difference indicated an increase in 6MWT distance following the intervention. The 95% confidence interval for the median difference did not include zero, supporting the statistical significance of this change.
+The median paired difference indicated an overall increase in 6MWT distance following the intervention. The 95% confidence interval did not include zero, supporting the statistical significance of this improvement.
 
-The distribution of individual changes in 6-minute walk distance is shown in Figure 3.
+The distribution of individual changes (Figure 3) shows that the majority of patients experienced an increase in walking distance, while a smaller proportion showed a decrease.
 
-Most patients exhibited a positive change in 6MWT distance, indicating an overall improvement following the intervention. Only a small number of patients showed a decrease in performance.
+The histogram suggests a slightly right-skewed distribution, indicating that some patients achieved substantial improvements, whereas others showed more modest or negative changes. The dashed red line at zero represents the threshold between improvement and decline.
 
-The distribution appears slightly right-skewed, with some patients demonstrating large improvements, while a few showed minimal or negative changes. The dashed red line at zero highlights the threshold between improvement and decline.
-
-Overall, this graphical representation supports the results of the Wilcoxon test, confirming a general increase in functional capacity after the intervention.
+Overall, these results indicate a significant improvement in functional capacity after the intervention, although with noticeable inter-individual variability.
 
 # Step 11. Physical performance correlation – quality of life
 
@@ -272,17 +248,17 @@ p_corr <- ggplot(included_data, aes(
   y = pedsql_totalself_after
 )) +
   geom_point() +
-  geom_smooth(method = "lm", se = TRUE) +
+  geom_smooth(method = "loess", se = TRUE) +
   xlab("6-Minute Walk Distance (m)") +
   ylab("PedsQL Score (0–100)") +
-  ggtitle("Figure 4. Correlation Between Functional Capacity and Quality of Life") +
+  ggtitle("Figure 4. Correlation Between Quality of Life and Functional Capacity measured at 6mwt ") +
   theme_minimal()
 
 p_corr
 
 # Export PDF
 ggsave(
-  "figures/Figure_4_Correlation_6MWT_PedsQL.pdf",
+  "figures/Figure_4_Correlation_PedsQL_6MWT.pdf",
   plot = p_corr,
   width = 6,
   height = 4
