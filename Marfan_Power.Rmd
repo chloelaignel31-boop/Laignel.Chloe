@@ -224,6 +224,40 @@ The histogram suggests a slightly right-skewed distribution, indicating that som
 Overall, these results indicate a significant improvement in functional capacity after the intervention, although with noticeable inter-individual variability.
 
 # Step 11. Visualization of the 6 dimensions of the PedsQL self-questionnaire after 6 months 
+```{r}
+pedsql_long <- included_data %>%
+  mutate(id = row_number()) %>% 
+  select(
+    id,
+    pedsql_totalself_before, pedsql_totalself_after,
+    pedsql_physiqueself_before, pedsql_physiqueself_after,
+    pedsql_emotionself_before, pedsql_emotionself_after,
+    pedsql_relationself_before, pedsql_relationself_after,
+    pedsql_ecoleself_before, pedsql_ecoleself_after,
+    pedsql_psycosocialself_before, pedsql_psycosocialself_after
+  ) %>%
+  pivot_longer(cols = -id,
+               names_to = "Variable",
+               values_to = "Score") %>%
+  mutate(
+    Time = ifelse(grepl("before", Variable), "Before", "After"),
+    Dimension = case_when(
+      grepl("total", Variable) ~ "Total",
+      grepl("physique", Variable) ~ "Physical",
+      grepl("emotion", Variable) ~ "Emotional",
+      grepl("relation", Variable) ~ "Social",
+      grepl("ecole", Variable) ~ "School",
+      grepl("psycosocial", Variable) ~ "Psychosocial"
+    )
+  )
+
+ggplot(pedsql_long, aes(x = Time, y = Score, group = id)) +
+  geom_line(alpha = 0.4, color = "grey50") +   
+  geom_point(aes(color = Time), size = 2) + 
+  geom_boxplot(aes(fill = Time), alpha = 0.3, width = 0.5, outlier.shape = NA) +
+  facet_wrap(~Dimension) +
+  theme_minimal()
+```
 
 ```{r pedsql-plot}
 library(dplyr)
