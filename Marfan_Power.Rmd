@@ -260,8 +260,8 @@ p_corr
 ggsave(
   "figures/Figure_4_Correlation_PedsQL_6MWT.pdf",
   plot = p_corr,
-  width = 6,
-  height = 4
+  width = 8,
+  height = 6
 )
 ```
 ## Interpretation of Spearman correlation
