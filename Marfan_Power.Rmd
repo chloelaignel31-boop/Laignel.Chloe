@@ -143,18 +143,18 @@ pdf(
 )
 
 # Table sans quadrillage
-#tg <- tableGrob(
-#  table_final,
-#  rows = NULL,
-#  theme = ttheme_minimal(  
- #   core = list(
-#      fg_params = list(fontsize = 9)
- #   ),
- #   colhead = list(
- #     fg_params = list(fontsize = 10, fontface = "bold")
- #   )
- # )
-#)
+tg <- tableGrob(
+  table_final,
+  rows = NULL,
+  theme = ttheme_minimal(  
+    core = list(
+      fg_params = list(fontsize = 9)
+    ),
+    colhead = list(
+      fg_params = list(fontsize = 10, fontface = "bold")
+    )
+  )
+)
 
 grid.arrange(
   textGrob(
