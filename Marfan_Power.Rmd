@@ -225,11 +225,16 @@ Overall, these results indicate a significant improvement in functional capacity
 
 # Step 11. Visualization of the 6 dimensions of the PedsQL self-questionnaire after 6 months 
 
-```{r}
-pedsql_long <- included_data %>%
-  mutate(id = row_number()) %>% 
+## Boxplots of PedsQL scores before and after the intervention
+
+```{r pedsql-plot}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# Data PedsQL before/after
+pedsql_data <- included_data %>%
   select(
-    id,
     pedsql_totalself_before, pedsql_totalself_after,
     pedsql_physiqueself_before, pedsql_physiqueself_after,
     pedsql_emotionself_before, pedsql_emotionself_after,
@@ -237,13 +242,14 @@ pedsql_long <- included_data %>%
     pedsql_ecoleself_before, pedsql_ecoleself_after,
     pedsql_psycosocialself_before, pedsql_psycosocialself_after
   ) %>%
-  pivot_longer(cols = -id,
+  pivot_longer(cols = everything(),
                names_to = "Variable",
                values_to = "Score") %>%
   mutate(
     Time = ifelse(grepl("before", Variable), "Before", "After"),
+    Time = factor(Time, levels = c("Before", "After")),  # 🔥 FIX ICI
     Dimension = case_when(
-      grepl("total", Variable) ~ "Total",
+      grepl("total", Variable) ~ "Total Score",
       grepl("physique", Variable) ~ "Physical",
       grepl("emotion", Variable) ~ "Emotional",
       grepl("relation", Variable) ~ "Social",
@@ -252,76 +258,110 @@ pedsql_long <- included_data %>%
     )
   )
 
-ggplot(pedsql_long, aes(x = Time, y = Score, group = id)) +
-  geom_line(alpha = 0.4, color = "grey50") +   
-  geom_point(aes(color = Time), size = 2) + 
-  geom_boxplot(aes(fill = Time), alpha = 0.3, width = 0.5, outlier.shape = NA) +
-  facet_wrap(~Dimension) +
-  theme_minimal()
+# Medians calculation for each dimension and time point
+medians <- pedsql_data %>%
+  group_by(Dimension, Time) %>%
+  summarise(median = median(Score, na.rm = TRUE), .groups = "drop")
 
-```
-
-```{r pedsql-plot}
-library(dplyr)
-library(tidyr)
-library(ggplot2)
-
-pedsql_data <- included_data %>%
-  select(
-    pedsql_totalself_after,
-    pedsql_physiqueself_after,
-    pedsql_emotionself_after,
-    pedsql_relationself_after,
-    pedsql_ecoleself_after,
-    pedsql_psycosocialself_after
-  ) %>%
-  pivot_longer(cols = everything(),
-               names_to = "Dimension",
-               values_to = "Score") %>%
-  mutate(Dimension = recode(Dimension,
-    "pedsql_totalself_after" = "Total Score",
-    "pedsql_physiqueself_after" = "Physical",
-    "pedsql_emotionself_after" = "Emotional",
-    "pedsql_relationself_after" = "Social",
-    "pedsql_ecoleself_after" = "School",
-    "pedsql_psycosocialself_after" = "Psychosocial"
-  ))
-
-# Create boxplot with facets
-p_pedsql <- ggplot(pedsql_data, aes(x = Dimension, y = Score, fill = Dimension)) +
-  geom_boxplot(show.legend = FALSE) +
+# Plot
+p_pedsql <- ggplot(pedsql_data, aes(x = Time, y = Score, fill = Dimension)) +
   
-  # Facet (1 boxplot par dimension)
-  facet_wrap(~Dimension, nrow = 2) +
+  geom_boxplot(alpha = 0.5, outlier.shape = NA) +
+  
+  # Medians lines each dimension
+  geom_line(
+    data = medians,
+    aes(x = Time, y = median, group = Dimension, color = Dimension),
+    size = 1
+  ) +
+  
+  # Medians points
+  
+  geom_point(
+    data = medians,
+    aes(x = Time, y = median, color = Dimension),
+    size = 2
+  ) +
+  
+  facet_wrap(~ Dimension, nrow = 2) +
   
   xlab("") +
   ylab("Score (0–100)") +
-  ggtitle("Figure 4. Distribution of PedsQL Scores Across Dimensions") +
+  ggtitle("Figure 4. Distribution of PedsQL Scores Before and After Intervention") +
   
   theme_minimal() +
   theme(
-    strip.text = element_text(face = "bold"),   # titres des facets
-    axis.text.x = element_blank(),              # inutile maintenant
-    axis.ticks.x = element_blank()
+    strip.text = element_text(face = "bold"),
+    legend.position = "none"   
   )
-
 p_pedsql
 
-# Export PDF
+# Export
 ggsave(
-  "figures/Figure_4_PedsQL_Dimensions.pdf",
+  "figures/Figure_4_PedsQL_Before_After.pdf",
   plot = p_pedsql,
   width = 8,
   height = 6
 )
 ```
+## Table 3. Descriptive Statistics of PedsQL Scores Before and After the Intervention (Median and Interquartile Range)
+```{r}
+library(dplyr)
+library(tidyr)
+
+# ---- Function to compute Median (IQR) ----
+# This function returns a formatted string: median (Q1–Q3)
+format_median_iqr <- function(x) {
+  med <- median(x, na.rm = TRUE)
+  q1  <- quantile(x, 0.25, na.rm = TRUE)
+  q3  <- quantile(x, 0.75, na.rm = TRUE)
+  
+  paste0(
+    round(med, 1), " (",
+    round(q1, 1), "–",
+    round(q3, 1), ")"
+  )
+}
+
+# ---- Create descriptive table ----
+# Compute median and IQR for each dimension and time point
+table_pedsql <- pedsql_data %>%
+  group_by(Dimension, Time) %>%
+  summarise(value = format_median_iqr(Score), .groups = "drop") %>%
+  
+  # Reshape to wide format (Before vs After)
+  pivot_wider(names_from = Time, values_from = value) %>%
+  
+  # Rename columns for clarity
+  rename(
+    `Before Median (IQR)` = Before,
+    `After Median (IQR)`  = After
+  ) %>%
+  
+  # Order dimensions alphabetically (optional)
+  arrange(Dimension)
+
+# Display table
+table_pedsql
+
+# ---- Export table ----
+pdf(
+  "figures/Table_3_Descriptive_Statistics_of_PedsQL.pdf",
+  width = 8,
+  height = 1 + n_rows * 0.3   
+)
+```
+
+
 ## Interpretation of PedsQL dimensions
 
-The boxplots show relatively high PedsQL scores across all dimensions, with moderate to substantial variability between individuals. Differences in dispersion are observed across dimensions, with some domains appearing more heterogeneous than others.
+The boxplots indicate generally high PedsQL scores across all dimensions, with moderate to substantial inter-individual variability. While dispersion differs slightly between domains, no dimension appears uniformly more variable than the others.
 
-These findings suggest that quality of life is a multidimensional construct, with varying patterns across its components. The observed variability highlights the influence of multiple factors on patient-reported outcomes, beyond a single domain.
+A consistent pattern emerges across all dimensions, with higher median scores observed after the intervention compared to before. This shift suggests a global improvement in perceived quality of life, although the magnitude of change varies somewhat between domains.
 
-Overall, this descriptive analysis provides an overview of the distribution and heterogeneity of quality of life within the study population, prior to the assessment of its relationship with functional capacity.
+These results support the multidimensional nature of quality of life, with parallel but not identical evolutions across its components. The remaining variability within each dimension highlights the influence of individual-level factors on patient-reported outcomes.
+
+Overall, this descriptive analysis not only characterizes the distribution and heterogeneity of quality of life in the study population, but also suggests a general positive change following the intervention, prior to examining its relationship with functional capacity.
 
 # Step 12. Physical performance correlation – quality of life
 
