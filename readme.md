@@ -73,7 +73,7 @@ In addition, an exploratory correlation analysis between functional capacity and
 
 ## 2.1 Python preprocessing and exploratory analysis
 
-Open and run Laignel_Chloe.ipynb
+Open and run Laignel_Chloe_processing_exploratory_analysis.ipynb
 
 This step performs data preprocessing and exploratory analysis, and generates the following outputs in the /figures folder:
 
@@ -89,7 +89,7 @@ It also exports the processed datasets for statistical analysis in the /data fol
 
 ## 2.2 Statistical analysis in R
 
-Open and knit Laignel_Chloe.Rmd
+Open and knit Laignel_Chloe_statiscal_analysis.Rmd
 
 This step performs statistical analyses and generates the following outputs in the /figures folder:
 
@@ -102,7 +102,10 @@ Statistical results are saved in the /results folder:
 - Wilcoxon test results
 - Spearman correlation results
 
-Getting the final html: Laignel_Chloe.html
+Getting the final :
+
+- Rmd: Laignel_Chloe.Rmd
+- html: Laignel_Chloe.html
 
 # 3. Project structure
 
@@ -111,6 +114,8 @@ data/ : raw dataset (Marfan.xlsx) and processed datasets (data_clean.xlsx, data_
 figures/ : all generated figures and tables
 
 results/ : statistical results (Wilcoxon test and Spearman correlation)
+
+notebook/ : Laignel_Chloe_statiscal_analysis.Rmd and Laignel_Chloe_processing_exploratory_analysis.ipynb
 
 Laignel_Chloe.html : final project report
 
