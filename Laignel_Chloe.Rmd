@@ -89,16 +89,25 @@ R (statistical analysis):
 
 ## 3.1. Functional capacity (6MWT)
 
+### Figure 1. Changes in 6-minute walk distance before and after intervention.
 
-```{r, echo=FALSE, fig.align='center', out.width='80%'}
+
+
+
+```{r, echo=FALSE, fig.align='center', out.width='100%, dpi=300}'}
 knitr::include_graphics("figures/Figure_1_Changes_in_6MWT_before_after.pdf")
 ```
 
-```{r}
+### Figure 2. Boxplot of changes in 6-minute walk distance.
+
+```{r, echo=FALSE, fig.align='center', out.width='100%'}
 knitr::include_graphics("figures/Figure_2_Boxplot_of_Changes_in_6-Minute_Walk_Distance.pdf")
 ```
 
-```{r}
+
+### Figure 3. Histogram of individual changes in 6-minute walk distance.
+
+```{r, echo=FALSE, fig.align='center', out.width='100%'}
 knitr::include_graphics("figures/Figure_3_Histogram_of_Individual_Changes_in_the_6-Minute_Walk_Test.pdf")
 ```
 
