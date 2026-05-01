@@ -355,7 +355,7 @@ pdf(
   width = 8,
   height = 1 + n_rows * 0.4
 )
-
+grid.table(table_pedsql) 
 dev.off()   
 ```
 
