@@ -1,4 +1,7 @@
-# Data analysis project of the Marfan Power study as part of the teaching unit Movement Analysis
+# R and Python project for Master’s internship
+
+# Analysis of the effects of an adapted physical activity program in children with Marfan syndrome
+
 By Chloé Laignel-Granier
 
 Github link : https://github.com/chloelaignel31-boop/Laignel.Chloe.git
