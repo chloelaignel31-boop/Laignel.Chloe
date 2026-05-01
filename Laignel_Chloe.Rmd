@@ -11,8 +11,78 @@ output:
     code_folding: hide
     css: style.css
 ---
+# 0. Project accessibility
 
+The project is available on GitHub at this link: https://github.com/chloelaignel31-boop/Laignel.Chloe.git
 
+# 1. Scientific problem
+
+This project presents a secondary analysis of the Marfan Power dataset (Edouard et al., 2026), focusing on functional capacity and quality of life in children with Marfan syndrome.
+
+## 1.1. Context
+
+Marfan syndrome (MFS) is a rare genetic disorder affecting connective tissue, mainly involving the cardiovascular, musculoskeletal, and ocular systems. Aortic dilation is the most serious complication due to the risk of dissection (Milewicz et al., 2021).
+
+Despite improvements in life expectancy, many patients still experience reduced physical capacity and chronic fatigue, negatively impacting their health-related quality of life (Goldfinger et al., 2017).
+
+These limitations are partly explained by decreased muscle strength and reduced exercise tolerance (Jouini et al., 2024). Adapted physical activity is known to improve these parameters and is increasingly recommended in clinical management. However, due to cardiovascular risks, exercise must be carefully prescribed and individualized in this population (Peters et al., 2001).
+
+Evidence on structured exercise programs in children with MFS remains limited. The Marfan Power study investigated a home-based adapted physical activity program and suggested improvements in functional capacity and quality of life, despite variable adherence and missing data (Edouard et al., 2026).
+
+Research objective:
+To evaluate changes in functional capacity using the 6-minute walk test (6MWT) and to explore its association with quality of life in children with Marfan syndrome.
+
+## 1.2 Aim
+
+The primary aim of this study was to assess changes in functional capacity following the intervention, using the 6-minute walk test (6MWT) as the primary outcome.
+
+The secondary aim was to explore the relationship between functional performance and quality of life, assessed using the pediatric self-reported PedsQL questionnaire.
+
+## 1.3 Method
+
+### 1.3.1 Study design
+
+This study is a secondary analysis of the Marfan Power dataset.
+The original protocol included 3 months of observation followed by 3 months of intervention.
+
+The present analysis focuses on a simplified before–after comparison using data collected at:
+
+- baseline (T−3 months)
+- post-intervention (T+6 months)
+
+Functional capacity was assessed using the 6MWT and quality of life using PedsQL.
+
+### 1.3.2 Study population
+
+A total of 28 patients were initially included.
+
+After applying inclusion criteria based on data completeness:
+
+- 20 patients were included
+- 8 were excluded (missing data or loss to follow-up)
+
+## 1.4. Outcome measures
+
+Functional capacity: 6-minute walk test (6MWT)
+
+Quality of life: Pediatric Quality of Life Inventory (PedsQL)
+
+# 2. Aim of the code
+
+The objective of this code is to analyze changes in functional capacity using the 6-minute walk test (6MWT) before and after a 6-month adapted physical activity program. The analysis includes data preprocessing, visualization of individual and group-level changes, and statistical assessment using paired comparisons and correlation analysis with quality of life (PedsQL).
+
+# 3. Data analysis pipeline
+
+A structured data processing pipeline was implemented to ensure consistency, transparency, and reproducibility.
+
+Python (data preprocessing and exploration):
+Data cleaning
+Computation of individual changes in 6-minute walk distance (6MWT)
+Exploratory visualizations
+R (statistical analysis):
+Paired comparisons using the Wilcoxon test for 6MWT
+Exploratory visualization of PedsQL scores
+Correlation analysis between functional capacity (6MWT) and quality of life (PedsQL) using Spearman’s correlation
 
 
 # Setup and loading of required R packages
@@ -31,13 +101,7 @@ for (pkg in packages) {
 }
 ```
 
-# Introduction
 
-Following preprocessing in Python, cleaned datasets were exported to R for statistical analysis.
-
-Two datasets were used: included patients for the main analysis and excluded patients to assess potential bias.
-
-All statistical analyses were performed in R.
 
 # Step 7. Import datasets clean in R
 
