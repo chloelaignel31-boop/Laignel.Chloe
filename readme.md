@@ -3,20 +3,31 @@ By Chloé Laignel-Granier
 
 Github link : https://github.com/chloelaignel31-boop/Laignel.Chloe.git
 
-## Introduction
+# 1. Scientific problem
 
-This project presents the data preprocessing, analysis, and visualization pipeline as part of a secondary analysis of the Marfan Power dataset.
+This project presents the data preprocessing, analysis, and visualization pipeline as part of a secondary analysis of the Marfan Power dataset (Edouard et al., 2026).
 
-The main objective was to evaluate changes in functional capacity following a 6-month adapted physical activity program (3 months of observation followed by 3 months of intervention), using the 6-minute walk test (6MWT) as the primary outcome.
+## 1.1. Context
 
-A secondary analysis was also conducted to explore the relationship between functional performance and quality of life.
+Marfan syndrome (MFS) is a rare genetic disorder affecting connective tissue, mainly involving the cardiovascular, musculoskeletal, and ocular systems. Aortic dilation is the most serious complication due to the risk of dissection (Milewicz et al., 2021).
+
+Despite improvements in life expectancy, many patients still experience reduced physical capacity and chronic fatigue, which negatively impact their health-related quality of life (Goldfinger et al., 2017).
+
+Reduced functional capacity in patients with MFS is partly explained by decreased muscle strength and reduced exercise tolerance (Jouini et al., 2024). Adapted physical activity is known to improve these parameters and is increasingly recommended in clinical management. However, due to cardiovascular risks, exercise must be carefully prescribed and individualized in this population (Peters et al., 2001).
+
+Despite these recommendations, data on structured exercise programs in children with MFS remain limited. The Marfan Power study evaluated a 6-month personalized home-based physical activity program (3 months of observation followed by 3 months of intervention) and suggested improvements in functional capacity and quality of life, although with variable adherence and missing data (Edouard et al., 2026).
+
+What we are looking for:
+To evaluate changes in functional capacity using the 6-minute walk test (6MWT) and to explore the relationship between functional capacity and quality of life in children with Marfan syndrome.
+
+## 1.2 Aim
+
+The primary aim of this study was to assess changes in functional capacity following a 6-month adapted physical activity program (3 months of observation followed by 3 months of intervention), using the 6-minute walk test (6MWT) as the primary outcome. 
+
+The secondary aim was to explore the relationship between functional performance (6MWT at 6 months) and quality of life, assessed using the pediatric self-reported PedsQL questionnaire at 6 months.
 
 
-### Research question
-
-Does a 6-month adapted physical activity program improve functional capacity, as assessed by the 6-minute walk test, in children with Marfan syndrome, and is this improvement associated with enhanced quality of life?
-
-## Methode
+## 1.3 Methode
 
 ### Study population
 
