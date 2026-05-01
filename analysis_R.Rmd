@@ -342,6 +342,12 @@ cor_test <- cor.test(
 
 cor_test
 
+# Export Spearman correlation results
+sink("results/spearman_correlation_results.txt")
+cat("Spearman correlation (6MWT vs PedsQL)\n\n")
+print(cor_test)
+sink()
+
 # Viewing
 library(ggplot2)
 

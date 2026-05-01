@@ -1,0 +1,12 @@
+Spearman correlation (6MWT vs PedsQL)
+
+
+	Spearman's rank correlation rho
+
+data:  included_data$`6minwt_distance_traveled_m_after` and included_data$pedsql_totalself_after
+S = 1081.3, p-value = 0.4299
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.1869827 
+
