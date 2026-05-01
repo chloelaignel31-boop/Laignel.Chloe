@@ -42,7 +42,7 @@ The cleaned datasets were imported into R for statistical analysis. Separate dat
 
 # Step 8. Descriptive statistics of included and excluded patients at baseline
 
-```{r import-data}
+```{r}
 library(dplyr)
 library(gridExtra)
 library(grid)
