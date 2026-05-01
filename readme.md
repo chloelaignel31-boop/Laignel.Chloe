@@ -105,20 +105,25 @@ Statistical results are saved in the /results folder:
 data/ : raw : Marfan.xlsx and cleaned datasets: data_clean.xlsx and data_excluded.xlsx
 figures/ : toute les figures et tableaux obtenus
 results/ : statiscal résults (wilcoxon and spearman)
-notebooks/ : Jupyter notebooks and R Markdown files (optional)
+Laignel_Chloe.html
 Laignel_Chloe.ipynb : Python entry point
 Laignel_Chloe.Rmd : R entry point
 Laignel_Chloe.Rproj : RStudio project 
 
-Requirements
-Python libraries
-pandas
-numpy
-matplotlib
-seaborn
-R packages
-readxl
-dplyr
-gridExtra
+# 4. Requirements
+
+## 4.1 Python libraries
+
+- pandas
+- numpy
+- matplotlib
+- seaborn
+
+## 4.2 R packages
+
+- readxl
+- dplyr
+- gridExtra
 
 ## Reference
+
