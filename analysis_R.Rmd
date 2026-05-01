@@ -309,57 +309,6 @@ ggsave(
   height = 6
 )
 ```
-## Table 3. Descriptive Statistics of PedsQL Scores Before and After the Intervention (Median and Interquartile Range)
-
-```{r}
-library(dplyr)
-library(tidyr)
-library(knitr)
-
-# Function to compute Median (IQR) 
-format_median_iqr <- function(x) {
-  med <- median(x, na.rm = TRUE)
-  q1  <- quantile(x, 0.25, na.rm = TRUE)
-  q3  <- quantile(x, 0.75, na.rm = TRUE)
-  
-  paste0(round(med, 1), " (", round(q1, 1), "–", round(q3, 1), ")")
-}
-
-# Create descriptive table
-table_pedsql <- pedsql_data %>%
-  group_by(Dimension, Time) %>%
-  summarise(Value = format_median_iqr(Score), .groups = "drop") %>%
-  pivot_wider(names_from = Time, values_from = Value) %>%
-  rename(
-    `Before (Median [IQR])` = Before,
-    `After (Median [IQR])`  = After
-  ) %>%
-  arrange(Dimension)
-
-# Remove row names
-rownames(table_pedsql) <- NULL
-
-# Display table
-kable(
-  table_pedsql,
-  align = c("l", "c", "c"),
-  caption = "Descriptive statistics of PedsQL scores before and after the intervention"
-)
-
-# Export to PDF
-library(gridExtra)
-library(grid)
-n_rows <- nrow(table_pedsql)
-pdf(
-  "figures/Table_3_Descriptive_Statistics_of_PedsQL.pdf",
-  width = 8,
-  height = 1 + n_rows * 0.4
-)
-grid.table(table_pedsql) 
-dev.off()   
-```
-
-
 
 ## Interpretation of PedsQL dimensions
 
