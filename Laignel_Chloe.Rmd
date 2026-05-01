@@ -16,6 +16,17 @@ output:
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
+```{r}
+packages <- c("readxl", "dplyr", "gridExtra")
+
+for (pkg in packages) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+
 # Introduction
 
 Following preprocessing in Python, cleaned datasets were exported to R for statistical analysis.
