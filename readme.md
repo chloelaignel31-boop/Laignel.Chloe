@@ -100,15 +100,23 @@ Statistical results are saved in the /results folder:
 - Wilcoxon test results
 - Spearman correlation results
 
+Getting the final html: Laignel_Chloe.html
+
 # 3. Project structure
 
-data/ : raw : Marfan.xlsx and cleaned datasets: data_clean.xlsx and data_excluded.xlsx
-figures/ : toute les figures et tableaux obtenus
-results/ : statiscal résults (wilcoxon and spearman)
-Laignel_Chloe.html
-Laignel_Chloe.ipynb : Python entry point
-Laignel_Chloe.Rmd : R entry point
-Laignel_Chloe.Rproj : RStudio project 
+data/ : raw dataset (Marfan.xlsx) and processed datasets (data_clean.xlsx, data_excluded.xlsx)
+
+figures/ : all generated figures and tables
+
+results/ : statistical results (Wilcoxon test and Spearman correlation)
+
+Laignel_Chloe.html : final project report
+
+Laignel_Chloe.ipynb : Python entry point (data preprocessing and exploratory analysis)
+
+Laignel_Chloe.Rmd : R entry point (statistical analysis)
+
+Laignel_Chloe.Rproj : RStudio project file
 
 # 4. Requirements
 
@@ -125,5 +133,8 @@ Laignel_Chloe.Rproj : RStudio project
 - dplyr
 - gridExtra
 
-## Reference
+# 5. Conclusion
+
+
+# 6. Reference
 
