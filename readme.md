@@ -136,5 +136,23 @@ Laignel_Chloe.Rproj : RStudio project file
 # 5. Conclusion
 
 
-# 6. Reference
+# 6. References
+
+Edouard, T., Bajanca, F., Flumian, C., et al. (2026). *A personalized home-based exercise training program in children with Marfan and Loeys-Dietz syndromes improves aerobic exercise capacity and health-related quality of life*.
+https://pmc.ncbi.nlm.nih.gov/articles/PMC12958747/
+
+Edouard, T., Picot, M.-C., Bajanca, F., Huguet, H., Guitarte, A., Langeois, M., Chesneau, B., Khau Van Kien, P., Garrigue, E., Dulac, Y., & Amedro, P. (2024). *Health-related quality of life in children and adolescents with Marfan syndrome or related disorders: a controlled cross-sectional study*.
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11059743/
+
+Peters, K. F., Horne, R., Kong, F., Francomano, C. A., & Biesecker, B. B. (2001). *Living with Marfan syndrome II. Medication adherence and physical activity modification*.
+https://pubmed.ncbi.nlm.nih.gov/11683774/
+
+Milewicz, D. M., Braverman, A. C., De Backer, J., Morris, S. A., Boileau, C., Maumenee, I. H., Jondeau, G., Evangelista, A., & Pyeritz, R. E. (2021). *Marfan syndrome*.
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9261969/
+
+Jouini, S., Milleron, O., Eliahou, L., Jondeau, G., & Vitiello, D. (2024). *Online personal training in patients with Marfan syndrome: A randomized controlled study of its impact on quality of life and physical capacity*. 
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11681478/
+
+Goldfinger, J. Z., Preiss, L. R., Devereux, R. B., Roman, M. J., Hendershot, T. P., Kroner, B. L., & Eagle, K. A. (2017). *Quality of life and associated factors in patients with Marfan syndrome: The GenTAC registry*.
+https://pmc.ncbi.nlm.nih.gov/articles/PMC5519341/
 
