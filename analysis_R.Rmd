@@ -252,7 +252,7 @@ pedsql_data <- included_data %>%
                values_to = "Score") %>%
   mutate(
     Time = ifelse(grepl("before", Variable), "Before", "After"),
-    Time = factor(Time, levels = c("Before", "After")),  # 🔥 FIX ICI
+    Time = factor(Time, levels = c("Before", "After")),
     Dimension = case_when(
       grepl("total", Variable) ~ "Total Score",
       grepl("physique", Variable) ~ "Physical",
@@ -314,61 +314,50 @@ ggsave(
 ```{r}
 library(dplyr)
 library(tidyr)
+library(knitr)
 
-# ---- Function to compute Median (IQR) ----
-# This function returns a formatted string: median (Q1–Q3)
+# Function to compute Median (IQR) 
 format_median_iqr <- function(x) {
   med <- median(x, na.rm = TRUE)
   q1  <- quantile(x, 0.25, na.rm = TRUE)
   q3  <- quantile(x, 0.75, na.rm = TRUE)
   
-  paste0(
-    round(med, 1), " (",
-    round(q1, 1), "–",
-    round(q3, 1), ")"
-  )
+  paste0(round(med, 1), " (", round(q1, 1), "–", round(q3, 1), ")")
 }
 
-# ---- Create descriptive table ----
-# Compute median and IQR for each dimension and time point
+# Create descriptive table
 table_pedsql <- pedsql_data %>%
   group_by(Dimension, Time) %>%
-  summarise(value = format_median_iqr(Score), .groups = "drop") %>%
-  
-  # Reshape to wide format (Before vs After)
-  pivot_wider(names_from = Time, values_from = value) %>%
-  
-  # Rename columns for clarity
+  summarise(Value = format_median_iqr(Score), .groups = "drop") %>%
+  pivot_wider(names_from = Time, values_from = Value) %>%
   rename(
-    `Before Median (IQR)` = Before,
-    `After Median (IQR)`  = After
+    `Before (Median [IQR])` = Before,
+    `After (Median [IQR])`  = After
   ) %>%
-  
-  # Order dimensions alphabetically (optional)
   arrange(Dimension)
 
+# Remove row names
+rownames(table_pedsql) <- NULL
+
 # Display table
-table_pedsql
+kable(
+  table_pedsql,
+  align = c("l", "c", "c"),
+  caption = "Descriptive statistics of PedsQL scores before and after the intervention"
+)
 
-# ---- Export table ----
-
+# Export to PDF
 library(gridExtra)
 library(grid)
-
-rownames(table_pedsql) <- NULL
 n_rows <- nrow(table_pedsql)
-
-# Export table to PDF
 pdf(
   "figures/Table_3_Descriptive_Statistics_of_PedsQL.pdf",
   width = 8,
   height = 1 + n_rows * 0.4
 )
 
-grid.table(table_pedsql)
-
-dev.off()
 ```
+
 
 
 ## Interpretation of PedsQL dimensions
