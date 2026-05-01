@@ -214,6 +214,12 @@ wilcox_test <- wilcox.test(
 )
 wilcox_test
 
+# Export Wilcoxon test results to a text file
+sink("results/wilcoxon_test_results.txt")
+cat("Paired Wilcoxon Test (6MWT before vs after)\n\n")
+print(wilcox_test)
+sink()
+
 ```
 
 ## Interpretation of Wilcoxon test

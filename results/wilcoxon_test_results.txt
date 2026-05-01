@@ -1,0 +1,9 @@
+Paired Wilcoxon Test (6MWT before vs after)
+
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  included_data$`6minwt_distance_traveled_m_after` and included_data$`6minwt_distance_traveled_m_before`
+V = 170, p-value = 0.016
+alternative hypothesis: true location shift is not equal to 0
+

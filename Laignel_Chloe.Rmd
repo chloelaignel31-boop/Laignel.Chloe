@@ -67,37 +67,81 @@ Functional capacity: 6-minute walk test (6MWT)
 
 Quality of life: Pediatric Quality of Life Inventory (PedsQL)
 
-# 2. Aim of the code
+## 1.5. Aim of the code
 
 The objective of this code is to analyze changes in functional capacity using the 6-minute walk test (6MWT) before and after a 6-month adapted physical activity program. The analysis includes data preprocessing, visualization of individual and group-level changes, and statistical assessment using paired comparisons and correlation analysis with quality of life (PedsQL).
 
-# 3. Data analysis pipeline
+# 2. Data analysis pipeline
 
 A structured data processing pipeline was implemented to ensure consistency, transparency, and reproducibility.
 
 Python (data preprocessing and exploration):
-Data cleaning
-Computation of individual changes in 6-minute walk distance (6MWT)
-Exploratory visualizations
+- Data cleaning
+- Computation of individual changes in 6-minute walk distance (6MWT)
+- Exploratory visualizations
+ 
 R (statistical analysis):
-Paired comparisons using the Wilcoxon test for 6MWT
-Exploratory visualization of PedsQL scores
-Correlation analysis between functional capacity (6MWT) and quality of life (PedsQL) using Spearman’s correlation
+- Paired comparisons using the Wilcoxon test for 6MWT
+- Exploratory visualization of PedsQL scores
+- Correlation analysis between functional capacity (6MWT) and quality of life (PedsQL) using Spearman’s correlation
+
+#3. Results
+
+## 3.1. Functional capacity (6MWT)
 
 
-# Setup and loading of required R packages
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```{r, echo=FALSE, fig.align='center', out.width='80%'}
+knitr::include_graphics("figures/Figure_1_Changes_in_6MWT_before_after.pdf")
 ```
 
 ```{r}
-packages <- c("readxl", "dplyr", "gridExtra")
-
-for (pkg in packages) {
-  if (!require(pkg, character.only = TRUE)) {
-    install.packages(pkg)
-    library(pkg, character.only = TRUE)
-  }
-}
+knitr::include_graphics("figures/Figure_2_Boxplot_of_Changes_in_6-Minute_Walk_Distance.pdf")
 ```
+
+```{r}
+knitr::include_graphics("figures/Figure_3_Histogram_of_Individual_Changes_in_the_6-Minute_Walk_Test.pdf")
+```
+
+
+
+
+👉 (INSÈRE ici tes figures Python mais SANS grosse interprétation)
+
+✔️ garde seulement phrases courtes :
+
+Data visualization suggests an overall improvement in functional capacity, although variability between patients is observed.
+
+3.2. Descriptive statistics
+
+Descriptive statistics are reported as median [interquartile range].
+
+Although the median 6-minute walk distance slightly decreased between baseline and post-intervention, the median individual change was positive (+57.0 m), suggesting an overall improvement with inter-individual variability.
+
+Overall, 60% of patients improved, while 40% showed a decrease.
+
+3.3. Statistical analysis (R)
+
+👉 (ici tu gardes tes résultats R)
+
+Wilcoxon test
+Spearman correlation
+
+✔️ + interprétation (IMPORTANT → ici seulement)
+
+3.4. Quality of life (PedsQL)
+
+👉 figures R + interprétation
+
+3.5. Correlation analysis
+
+👉 figure corrélation + interprétation
+
+4. Discussion
+
+👉 (à compléter si demandé)
+
+5. Conclusion
+
+👉 (très court, 3–4 lignes)
+
 
