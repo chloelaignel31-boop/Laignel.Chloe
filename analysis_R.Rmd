@@ -356,6 +356,7 @@ pdf(
   height = 1 + n_rows * 0.4
 )
 
+dev.off()   
 ```
 
 
