@@ -1,6 +1,6 @@
 # R and Python project for Master’s internship
 
-# Analysis of the effects of an adapted physical activity program in children with Marfan syndrome
+# Analysis of the effects of an adapted physical activity program on functional capacity assessed by the 6-minute walk test (6MWT) in children with Marfan syndrome
 
 By Chloé Laignel-Granier
 

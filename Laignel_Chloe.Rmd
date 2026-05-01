@@ -1,5 +1,5 @@
 ---
-title: "Data analysis project of the Marfan Power study as part of the teaching unit Movement Analysis, part (2/2)"
+title: "Analysis of the effects of an adapted physical activity program on functional capacity assessed by the 6-minute walk test (6MWT) in children with Marfan syndrome"
 author: "Chloé Laignel-Granier"
 date: "2026-04-14"
 output:
@@ -12,6 +12,10 @@ output:
     css: style.css
 ---
 
+
+
+
+# Setup and loading of required R packages
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
