@@ -95,7 +95,6 @@ This step performs statistical analyses and generates the following outputs in t
 
 - Table 2. Comparison of included and excluded patients at baseline
 - Figure 4. Distribution of PedsQL Scores Before and After Intervention
-- Table 3. Descriptive statistics of PedsQL
 - Figure 5. Correlation between quality of life and functional capacity (6MWT)
 
 Statistical results are saved in the /results folder:
