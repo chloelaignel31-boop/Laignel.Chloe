@@ -66,3 +66,59 @@ The processed dataset was then exported to R for statistical analysis. Paired co
 
 In addition, an exploratory correlation analysis between functional capacity and quality of life was conducted using Spearman’s correlation.
 
+# 2. How to run the project
+
+## 2.1 Python preprocessing and exploratory analysis
+
+Open and run Laignel_Chloe.ipynb
+
+This step performs data preprocessing and exploratory analysis, and generates the following outputs in the /figures folder:
+
+- Figure 1. Changes in 6-Minute Walk Distance Before and After Intervention
+- Figure 2. Boxplot of Changes in 6-Minute Walk Distance
+- Figure 3. Histogram of Individual Changes in the 6-Minute Walk Test
+- Table 1. Distribution and changes in 6-minute walk distance
+
+It also exports the processed datasets for statistical analysis in the /data folder:
+
+- data_clean.xlsx (included patients)
+- data_excluded.xlsx (excluded patients)
+
+## 2.2 Statistical analysis in R
+
+Open and knit Laignel_Chloe.Rmd
+
+This step performs statistical analyses and generates the following outputs in the /figures folder:
+
+- Table 2. Comparison of included and excluded patients at baseline
+- Figure 4. Distribution of PedsQL Scores Before and After Intervention
+- Table 3. Descriptive statistics of PedsQL
+- Figure 5. Correlation between quality of life and functional capacity (6MWT)
+
+Statistical results are saved in the /results folder:
+
+- Wilcoxon test results
+- Spearman correlation results
+
+# 3. Project structure
+
+data/ : raw : Marfan.xlsx and cleaned datasets: data_clean.xlsx and data_excluded.xlsx
+figures/ : toute les figures et tableaux obtenus
+results/ : statiscal résults (wilcoxon and spearman)
+notebooks/ : Jupyter notebooks and R Markdown files (optional)
+Laignel_Chloe.ipynb : Python entry point
+Laignel_Chloe.Rmd : R entry point
+Laignel_Chloe.Rproj : RStudio project 
+
+Requirements
+Python libraries
+pandas
+numpy
+matplotlib
+seaborn
+R packages
+readxl
+dplyr
+gridExtra
+
+## Reference
