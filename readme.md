@@ -106,21 +106,19 @@ Open and knit Laignel_Chloe.Rmd to produce the final HTML report (Laignel_Chloe.
 
 # 3. Project structure
 
-data/ : raw dataset (Marfan.xlsx) and processed datasets (data_clean.xlsx, data_excluded.xlsx)
+data/ : Raw dataset (Marfan.xlsx) and processed datasets (data_clean.xlsx, data_excluded.xlsx)
 
-figures/ : all generated figures and tables
+figures/ : All generated figures and tables
 
-notebook/ : exploratory_analysis.ipynb and analysis_R.Rmd
+notebooks/ : exploratory_analysis.ipynb (Python) and analysis_R.Rmd (R)
 
-results/ : statistical results (Wilcoxon test and Spearman correlation)
+results/ : Statistical outputs (Wilcoxon test and Spearman correlation)
 
 Laignel_Chloe.Rproj : RStudio project file
 
-Laignel_Chloe.Rmd : final project
+Laignel_Chloe.Rmd: Final R Markdown file
 
-Laignel_Chloe.html : final project report
-
-
+Laignel_Chloe.html: Final project report
 
 # 4. Requirements
 
@@ -139,6 +137,11 @@ Laignel_Chloe.html : final project report
 
 # 5. Conclusion
 
+The analysis of functional capacity and quality of life in children with Marfan syndrome shows that:
+
+Functional capacity significantly improved after the intervention, as indicated by the Wilcoxon signed-rank test (V = 170, p = 0.016), although inter-individual variability was observed.
+The association between functional capacity and quality of life was weak and not statistically significant (Spearman’s rho = 0.19, p = 0.43).
+Overall, the adapted physical activity program appears to improve functional capacity, while its impact on quality of life remains uncertain.
 
 # 6. References
 
