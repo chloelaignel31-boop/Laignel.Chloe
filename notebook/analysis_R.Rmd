@@ -143,8 +143,9 @@ n_rows <- nrow(table_final)
 
 png(
   "../figures/Table_2_Comparison_of_included_and_excluded_patients_at_baseline.png",
-  width = 8,
-  height = 1 + n_rows * 0.3   
+  width = 800,
+  height = 1000,
+  res = 150
 )
 
 # Table sans quadrillage
