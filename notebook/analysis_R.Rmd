@@ -176,32 +176,14 @@ dev.off()
 ```
 Descriptive statistics were computed for included and excluded patients to assess potential selection bias. Continuous variables were summarized using mean ± standard deviation and median [IQR].
 
-A summary table was constructed to compare baseline characteristics between groups, with results formatted for clarity. The table was displayed in the R Markdown document and exported as a PDF for reporting.
-
-## Interpretation of Baseline Characteristics (Table 2)
-
-Baseline characteristics were compared between included and excluded patients to assess potential selection bias.
-
-Overall, the two groups appeared comparable across most variables. Age was slightly higher in excluded patients (13.8 ± 2.8 years) compared to included patients (12.4 ± 4.0 years), although the distributions overlapped substantially. Similarly, anthropometric measures such as weight, height, and BMI were broadly similar between groups, with no clinically meaningful differences observed.
-
-Baseline functional capacity, assessed by the 6-minute walk test (6MWT), was comparable between included and excluded patients (577.4 ± 55.4 m vs. 597.4 ± 24.6 m), suggesting no major difference in physical performance at baseline.
-
-Quality of life scores (PedsQL) also showed overlapping distributions between groups, although greater variability was observed among excluded patients.
-
-Sex distribution was similar between included (F 6 / M 14) and excluded patients (F 5 / M 3), with no statistically significant difference (Fisher’s exact test, p = 0.200).
-
-Overall, these findings suggest that excluded patients were not markedly different from included patients at baseline, indicating a limited risk of major selection bias.
+A summary table was constructed to compare baseline characteristics between groups, with results formatted for clarity. The table was displayed in the R Markdown document and exported as a PNG for reporting.
 
 
-# Step 10. Comparison of 6MWT Before and After Intervention.
+# Step 9. Comparison of 6MWT Before and After Intervention.
 
 Due to the small sample size and the potential non-normal distribution of the data, a non-parametric paired Wilcoxon signed-rank test was used to compare 6-minute walk distance before and after the intervention.
 
 A paired comparison of 6-minute walk distance before and after the intervention was performed in included patients.
-
-H0: There is no difference in 6-minute walk distance before and after the intervention.
-
-H1: There is a difference in 6-minute walk distance before and after the intervention.
 
 
 ```{r wilcoxon-test}
@@ -223,19 +205,7 @@ sink()
 
 ```
 
-## Interpretation of Wilcoxon test
-
-A paired Wilcoxon signed-rank test showed a statistically significant difference in 6-minute walk distance between pre- and post-intervention measurements (p = 0.016).
-
-The median paired difference indicated an overall increase in 6MWT distance following the intervention. The 95% confidence interval did not include zero, supporting the statistical significance of this improvement.
-
-The distribution of individual changes (Figure 3) shows that the majority of patients experienced an increase in walking distance, while a smaller proportion showed a decrease.
-
-The histogram suggests a slightly right-skewed distribution, indicating that some patients achieved substantial improvements, whereas others showed more modest or negative changes. The dashed red line at zero represents the threshold between improvement and decline.
-
-Overall, these results indicate a significant improvement in functional capacity after the intervention, although with noticeable inter-individual variability.
-
-# Step 11. Visualization of the 6 dimensions of the PedsQL self-questionnaire after 6 months 
+# Step 10. Visualization of the 6 dimensions of the PedsQL self-questionnaire after 6 months 
 
 ## Boxplots of PedsQL scores before and after the intervention
 
@@ -317,17 +287,7 @@ ggsave(
 )
 ```
 
-## Interpretation of PedsQL dimensions
-
-The boxplots indicate generally high PedsQL scores across all dimensions, with moderate to substantial inter-individual variability. While dispersion differs slightly between domains, no dimension appears uniformly more variable than the others.
-
-A consistent pattern emerges across all dimensions, with higher median scores observed after the intervention compared to before. This shift suggests a global improvement in perceived quality of life, although the magnitude of change varies somewhat between domains.
-
-These results support the multidimensional nature of quality of life, with parallel but not identical evolutions across its components. The remaining variability within each dimension highlights the influence of individual-level factors on patient-reported outcomes.
-
-Overall, this descriptive analysis not only characterizes the distribution and heterogeneity of quality of life in the study population, but also suggests a general positive change following the intervention, prior to examining its relationship with functional capacity.
-
-# Step 12. Physical performance correlation – quality of life
+# Step 11. Physical performance correlation – quality of life
 
 The association between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient, due to the non-normal distribution of the data.
 
@@ -374,30 +334,6 @@ ggsave(
   height = 6
 )
 ```
-## Interpretation of Spearman correlation
 
-The scatter plot does not show a clear relationship between 6-minute walk distance and PedsQL score. Although a slight upward trend can be visually suggested, the data points are widely dispersed across the range of values.
-
-The loess smoothing curve remains relatively flat, with only minor variations, and does not indicate a consistent or meaningful pattern of association. In addition, the wide confidence interval reflects a high level of uncertainty and substantial inter-individual variability.
-
-These observations suggest that any apparent trend should be interpreted with caution. The graphical representation alone does not provide strong evidence of an association between functional capacity and quality of life.
-
-This is consistent with the statistical analysis, which showed a weak and non-significant correlation (Spearman’s rho = 0.19, p = 0.43).
-
-Overall, the results do not support a meaningful relationship between 6MWT performance and quality of life in this sample.
-
-# Conclusion
-
-This study aimed to evaluate changes in functional capacity following the intervention and to explore its relationship with quality of life.
-
-Baseline comparisons between included and excluded patients did not reveal any major differences in demographic, anthropometric, or clinical characteristics. This suggests a limited risk of selection bias and supports the validity of the analytical sample.
-
-A significant improvement in functional capacity was observed after the intervention, as demonstrated by the increase in 6-minute walk distance. The results of the Wilcoxon signed-rank test, supported by the distribution of individual changes, indicate that most patients benefited from the intervention, although some inter-individual variability was noted.
-
-In contrast, the association between functional capacity and quality of life was weak and not statistically significant. While a slight positive trend was observed, the results do not support a clear relationship between physical performance and self-reported quality of life in this sample.
-
-Overall, these findings suggest that the intervention may improve functional capacity, but its impact on perceived quality of life remains uncertain. This discrepancy may be explained by the multifactorial nature of quality of life and the limited sample size.
-
-Further studies with larger sample sizes are needed to better understand the relationship between functional capacity and quality of life and to confirm these findings.
 
 
