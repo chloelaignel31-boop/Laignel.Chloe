@@ -36,8 +36,8 @@ for (pkg in packages) {
 library(readxl)
 
 # Import datasets
-included_data <- read_excel("data/data_clean.xlsx")
-excluded_data <- read_excel("data/data_excluded.xlsx")
+included_data <- read_excel("../data/data_clean.xlsx")
+excluded_data <- read_excel("../data/data_excluded.xlsx")
 
 # Check structure
 str(included_data)
@@ -142,7 +142,7 @@ library(grid)
 n_rows <- nrow(table_final)
 
 pdf(
-  "figures/Table_2_Comparison_of_included_and_excluded_patients_at_baseline.pdf",
+  "../figures/Table_2_Comparison_of_included_and_excluded_patients_at_baseline.png",
   width = 8,
   height = 1 + n_rows * 0.3   
 )
@@ -215,7 +215,7 @@ wilcox_test <- wilcox.test(
 wilcox_test
 
 # Export Wilcoxon test results to a text file
-sink("results/wilcoxon_test_results.txt")
+sink("../results/wilcoxon_test_results.txt")
 cat("Paired Wilcoxon Test (6MWT before vs after)\n\n")
 print(wilcox_test)
 sink()
@@ -309,7 +309,7 @@ p_pedsql
 
 # Export
 ggsave(
-  "figures/Figure_4_PedsQL_Before_After.pdf",
+  "../figures/Figure_4_PedsQL_Before_After.png",
   plot = p_pedsql,
   width = 8,
   height = 6
@@ -343,7 +343,7 @@ cor_test <- cor.test(
 cor_test
 
 # Export Spearman correlation results
-sink("results/spearman_correlation_results.txt")
+sink("../results/spearman_correlation_results.txt")
 cat("Spearman correlation (6MWT vs PedsQL)\n\n")
 print(cor_test)
 sink()
@@ -367,7 +367,7 @@ p_corr
 
 # Export PDF
 ggsave(
-  "figures/Figure_5_Correlation_PedsQL_6MWT.pdf",
+  "../figures/Figure_5_Correlation_PedsQL_6MWT.png",
   plot = p_corr,
   width = 8,
   height = 6
