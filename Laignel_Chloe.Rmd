@@ -54,18 +54,28 @@ Functional capacity was assessed using the 6MWT and quality of life using PedsQL
 
 ### 1.3.2 Study population
 
-A total of 28 patients were initially included.
+A total of 28 children and adolescents with Marfan syndrome were initially included in the dataset.
 
-After applying inclusion criteria based on data completeness:
+The inclusion and exclusion criteria used to define the study population have been previously described by Edouard et al. (2026, p. 8). The full article is available in the sources folder.
 
-- 20 patients were included
-- 8 were excluded (missing data or loss to follow-up)
+For this secondary analysis, patients were selected based on data completeness at baseline (T−3 months) and post-intervention (T+6 months) for the main variables of interest, including the 6-minute walk test (6MWT) and health-related quality of life (PedsQL).
+
+After applying these criteria:
+
+20 patients were included in the final analysis
+8 patients were excluded due to missing data or loss to follow-up
+
+This selection ensured the validity of within-subject comparisons in the paired statistical analysis
 
 ## 1.4. Outcome measures
 
-Functional capacity: 6-minute walk test (6MWT)
+```{r}
+knitr::include_graphics("sources/6MWT.png")
+```
 
-Quality of life: Pediatric Quality of Life Inventory (PedsQL)
+- Functional capacity: 6-minute walk test (6MWT)
+
+- Quality of life: Pediatric Quality of Life Inventory (PedsQL)
 
 ## 1.5. Aim of the code
 
@@ -79,11 +89,11 @@ Python (data preprocessing and exploration):
 - Data cleaning
 - Computation of individual changes in 6-minute walk distance (6MWT)
 - Exploratory visualizations
- 
+
 R (statistical analysis):
-- Paired comparisons using the Wilcoxon test for 6MWT
+- Paired comparisons using the Wilcoxon test
 - Exploratory visualization of PedsQL scores
-- Correlation analysis between functional capacity (6MWT) and quality of life (PedsQL) using Spearman’s correlation
+- Correlation analysis using Spearman’s correlation
 
 # 3. Results
 
