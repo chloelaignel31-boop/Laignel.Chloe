@@ -136,15 +136,15 @@ weight_kg: Body weight at inclusion (kg)
 height_cm: Height at inclusion (cm)
 bmi_kg_cm2: Body mass index at inclusion (kg/m²)
 
-Functional capacity (6MWT)
+Functional capacity (6MWT):
 6minwt_distance_traveled_m_before: Distance covered during the 6-minute walk test at baseline (meters)
 6minwt_distance_traveled_m_after: Distance covered post-intervention (meters)
 
-Cardiorespiratory parameter
+Cardiorespiratory parameter:
 vat_before: Ventilatory anaerobic threshold at baseline (% predicted)
 vat_after: Ventilatory anaerobic threshold post-intervention (% predicted)
 
-Quality of life (PedsQL – self-reported)
+Quality of life (PedsQL – self-reported):
 
 Scores range from 0 to 100, with higher scores indicating better perceived quality of life.
 
