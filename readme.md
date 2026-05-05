@@ -72,14 +72,23 @@ Finally, cleaned and excluded datasets were exported for subsequent statistical 
 
 The cleaned datasets were imported into R for statistical analysis.
 
-Descriptive statistics were computed to summarize the data, and baseline characteristics of included and excluded patients were compared to assess the potential risk of selection bias.
+Descriptive statistics were computed, and baseline characteristics of included and excluded patients were compared to assess potential selection bias.
 
-Changes in functional capacity were analyzed using a paired Wilcoxon signed-rank test.
+Inferential analyses were performed to evaluate changes in functional capacity and to explore its association with quality of life. Graphical representations were also used to support data interpretation.
 
-In addition, quality of life scores (PedsQL) were explored using graphical representations.
+## 1.5 Statistical analysis
 
-Finally, the relationship between functional capacity and quality of life was assessed using Spearman’s correlation.#
+Statistical analyses were performed using R.
 
+Continuous variables were described using mean ± standard deviation and median values, while categorical variables were presented as counts.
+
+Baseline comparisons between included and excluded patients were conducted using the Mann–Whitney U test for continuous variables and Fisher’s exact test for categorical variables.
+
+Changes in functional capacity before and after the intervention were assessed using the Wilcoxon signed-rank test.
+
+The association between functional capacity and quality of life was evaluated using Spearman’s rank correlation coefficient.
+
+All tests were two-sided, and a p-value < 0.05 was considered statistically significant.
 
 # 2. How to run the project
 

@@ -15,7 +15,7 @@ output:
 
 The project is available on GitHub at this link: https://github.com/chloelaignel31-boop/Laignel.Chloe.git
 
-# 1. Scientific problem
+# 1. Background and Objectives
 
 This project presents a secondary analysis of the Marfan Power dataset (Edouard et al., 2026), focusing on functional capacity and quality of life in children with Marfan syndrome.
 
@@ -40,19 +40,7 @@ The secondary aim was to explore the relationship between functional performance
 
 ## 1.3 Method
 
-### 1.3.1 Study design
-
-This study is a secondary analysis of the Marfan Power dataset.
-The original protocol included 3 months of observation followed by 3 months of intervention.
-
-The present analysis focuses on a simplified before–after comparison using data collected at:
-
-- baseline (T−3 months)
-- post-intervention (T+6 months)
-
-Functional capacity was assessed using the 6MWT and quality of life using PedsQL.
-
-### 1.3.2 Study population
+### 1.3.1 Study population
 
 A total of 28 children and adolescents with Marfan syndrome were initially included in the dataset.
 
@@ -67,17 +55,27 @@ After applying these criteria:
 
 This selection ensured the validity of within-subject comparisons in the paired statistical analysis
 
-## 1.4. Outcome measures
+### 1.3.2 Study design
 
+This study is a secondary analysis of the Marfan Power dataset.
+The original protocol included 3 months of observation followed by 6 months of intervention.
+
+Outcome measures
 ```{r}
 knitr::include_graphics("sources/6MWT.png")
 ```
 
-- Functional capacity: 6-minute walk test (6MWT)
+Primary outcome: Functional capacity, assessed using the 6-minute walk test (6MWT)
+Secondary outcome: Quality of life, assessed using the Pediatric Quality of Life Inventory (PedsQL)
 
-- Quality of life: Pediatric Quality of Life Inventory (PedsQL)
+The present analysis focuses on a simplified before–after comparison using data collected at:
 
-## 1.5. Aim of the code
+baseline (T−3 months)
+post-intervention (T+6 months)
+
+Functional capacity was evaluated as the main outcome, while quality of life was considered a secondary outcome.
+
+## 1.4. Aim of the code
 
 The objective of this code is to analyze changes in functional capacity using the 6-minute walk test (6MWT) before and after a 6-month adapted physical activity program. The analysis includes data preprocessing, visualization of individual and group-level changes, and statistical assessment using paired comparisons and correlation analysis with quality of life (PedsQL).
 
@@ -91,9 +89,11 @@ Python (data preprocessing and exploration):
 
 - Computation of individual changes in 6-minute walk distance (6MWT)
 
-- Exploratory visualizations
+- Exploratory visualizations of functional capacity 
 
 R (statistical analysis):
+
+- Descriptive statistics and baseline comparisons
 
 - Paired comparisons using the Wilcoxon test
 
@@ -108,7 +108,7 @@ R (statistical analysis):
 The code used to generate Table 2 is available in Section 8 of the R notebook analysis_R.Rmd
 
 ```{r}
-knitr::include_graphics("figures/Table_2_Comparison_of_included_and_excluded_patients_at_baseline.png")
+knitr::include_graphics("figures/Table_1_Comparison_of_included_and_excluded_patients_at_baseline.png")
 ```
 
 The study population was defined based on data completeness for the variables of interest at baseline (T−3) and post-intervention (T+6), resulting in the inclusion of 20 patients and the exclusion of 8 patients.
@@ -138,7 +138,7 @@ knitr::include_graphics("figures/Figure_3_Histogram_of_Individual_Changes_in_the
 
 
 ```{r}
-knitr::include_graphics("figures/Table_1_Distribution_and_changes_in_6MWT.png")
+knitr::include_graphics("figures/Table_2_Distribution_and_changes_in_6MWT.png")
 ```
 
 
@@ -214,16 +214,15 @@ This study aimed to evaluate changes in functional capacity following an adapted
 
 Baseline comparisons between included and excluded patients showed no significant differences in demographic or clinical characteristics, suggesting a low risk of selection bias and supporting the validity of the analytical sample.
 
-A significant improvement in functional capacity was observed after the intervention, as demonstrated by the increase in 6-minute walk distance and confirmed by the Wilcoxon signed-rank test (p = 0.016). Despite this overall improvement, inter-individual variability in response was noted.
+A significant improvement in functional capacity was observed after the intervention, as demonstrated by the increase in 6-minute walk distance and confirmed by the Wilcoxon signed-rank test (p = 0.016). However, notable inter-individual variability in response was observed.
 
-In contrast, the association between functional capacity and quality of life was weak and not statistically significant (Spearman’s ρ = 0.19, p = 0.43), indicating that improvements in physical performance were not directly reflected in self-reported quality of life.
+In contrast, no statistically significant correlation was found between functional capacity and quality of life (Spearman’s ρ = 0.19, p = 0.43), indicating that improvements in physical performance were not directly reflected in self-reported quality of life.
 
 Overall, these findings suggest that the intervention may effectively improve functional capacity, while its impact on perceived quality of life remains uncertain. This discrepancy likely reflects the multifactorial nature of quality of life, which cannot be explained by physical performance alone.
 
+In addition, the interpretation of the results should be made with caution, as key variables such as age, sex, and body mass index vary substantially in pediatric populations. Greater methodological rigor would have required the use of standardized measures, such as BMI z-scores, which were not available in this dataset.
+
 Finally, the relatively small sample size may have limited the statistical power to detect associations. Further studies with larger cohorts are needed to better understand the relationship between functional capacity and quality of life and to confirm these findings.
-
-donnees fluctue sur l'age et le sexe, bmi en pediatrie --> plus de rigueur 
-
 
 # 5. References
 
