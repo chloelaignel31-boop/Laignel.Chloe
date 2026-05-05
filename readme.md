@@ -126,6 +126,8 @@ notebooks/ : exploratory_analysis.ipynb (Python) and analysis_R.Rmd (R)
 
 results/ : Statistical outputs (Wilcoxon test and Spearman correlation)
 
+sources/: includes the reference article, the 6MWT illustration, and the pipeline diagram used in this project.
+
 Laignel_Chloe.Rproj : RStudio project file
 
 Laignel_Chloe.Rmd: Final R Markdown file
