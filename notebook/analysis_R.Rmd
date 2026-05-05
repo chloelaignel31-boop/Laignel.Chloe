@@ -29,7 +29,7 @@ for (pkg in packages) {
 }
 ```
 
-# Step 7. Import datasets clean in R
+# Step 6. Import datasets clean in R
 
 ```{r import-data}
 # Load package
@@ -45,12 +45,14 @@ str(excluded_data)
 ```
 The cleaned datasets were imported into R for statistical analysis. Separate datasets were used for included patients, forming the main analytical sample, and excluded patients, allowing the evaluation of potential selection bias.
 
-# Step 8. Descriptive statistics of included and excluded patients at baseline
-
+# Step 7. Descriptive statistics of included and excluded patients at baseline
 ```{r}
+
 library(dplyr)
 library(gridExtra)
 library(grid)
+
+# Descriptive statistics of included and excluded patients at baseline
 
 # Fonction descriptive
 describe <- function(x) {
@@ -81,6 +83,10 @@ labels <- c(
   "PedsQL score (0–100)"
 )
 
+# Total sample sizes
+n_inc_total <- nrow(included_data)
+n_exc_total <- nrow(excluded_data)
+
 table_list <- list()
 
 for(i in seq_along(vars)) {
@@ -90,12 +96,11 @@ for(i in seq_along(vars)) {
   x <- included_data[[var]]
   y <- excluded_data[[var]]
   
-  # Remove NA (important pour le test)
   x_clean <- x[!is.na(x)]
   y_clean <- y[!is.na(y)]
   
-  # Mann-Whitney
-  p_val <- round(wilcox.test(x_clean, y_clean)$p.value, 3)
+  p_val <- round(wilcox.test(x_clean, y_clean, exact = FALSE)$p.value, 3)
+  p_val <- paste0(p_val, "*")
   
   inc <- describe(x)
   exc <- describe(y)
@@ -113,12 +118,14 @@ for(i in seq_along(vars)) {
 
 table_final <- do.call(rbind, table_list)
 
-# ---- SEX ----
-p_sexe <- round(fisher.test(table(
+# Sex comparison (Fisher's exact test)
+p_sexe <- fisher.test(table(
   c(included_data$sexe, excluded_data$sexe),
   c(rep("Included", nrow(included_data)),
     rep("Excluded", nrow(excluded_data)))
-))$p.value, 3)
+))$p.value
+
+p_sexe <- paste0(round(p_sexe, 3), "†")
 
 sexe_inc <- table(included_data$sexe)
 sexe_exc <- table(excluded_data$sexe)
@@ -133,22 +140,24 @@ sex_df <- data.frame(
 
 table_final <- rbind(table_final, sex_df)
 
+# Rename columns with total sample size
+colnames(table_final)[3:4] <- c(
+  paste0("Included (n=", n_inc_total, ")"),
+  paste0("Excluded (n=", n_exc_total, ")")
+)
+
 table_final
 
-library(gridExtra)
-library(grid)
-
-# Ajuster hauteur automatiquement
+# Export table as image
 n_rows <- nrow(table_final)
 
 png(
-  "../figures/Table_2_Comparison_of_included_and_excluded_patients_at_baseline.png",
+  "../figures/Table_1_Comparison_of_included_and_excluded_patients_at_baseline.png",
   width = 900,
   height = 2 + n_rows * 42,
   res = 150
 )
 
-# Table sans quadrillage
 tg <- tableGrob(
   table_final,
   rows = NULL,
@@ -164,17 +173,21 @@ tg <- tableGrob(
 
 grid.arrange(
   textGrob(
-    "Table 2. Comparison of included and excluded patients at baseline",
+    "Table 1. Comparison of included and excluded patients at baseline",
     gp = gpar(fontsize = 10, fontface = "bold")
   ),
   tg,
+  textGrob(
+    "* Mann–Whitney U test; † Fisher’s exact test",
+    gp = gpar(fontsize = 8, fontface = "italic")
+  ),
   ncol = 1,
-  heights = c(0.2, 5)  
+  heights = c(0.2, 5, 0.3)
 )
 
 dev.off()
 ```
-Descriptive statistics were computed for included and excluded patients to assess potential selection bias. Continuous variables were summarized using mean ± standard deviation and median [IQR].
+Descriptive statistics were computed for included and excluded patients to assess potential selection bias. Continuous variables were summarized using mean ± standard deviation and median. Intergroup comparisons were performed using the Mann–Whitney U test for continuous variables and Fisher’s exact test for categorical variables.
 
 A summary table was constructed to compare baseline characteristics between groups, with results formatted for clarity. The table was displayed in the R Markdown document and exported as a PNG for reporting.
 
