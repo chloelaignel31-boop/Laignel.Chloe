@@ -51,6 +51,8 @@ This selection process ensured the validity of within-subject comparisons in the
 
 ## 1.4 Data processing pipeline
 
+Overview of the data processing and analysis pipeline: ![Pipeline](sources/pipeline.png)
+
 A structured data processing pipeline was used to ensure consistency, transparency, and reproducibility of the analyses. This approach provided a clear transition from data preprocessing and exploration in Python to statistical analysis and interpretation in R.
 
 ### 1.4.1 Python: data preprocessing and exploratory analysis
@@ -61,13 +63,14 @@ The dataset was then prepared for analysis, including the selection of patients 
 
 Exploratory data analysis was conducted using graphical representations such as boxplots, individual trajectories, and distribution plots to assess data distribution and visualize individual changes.
 
-Descriptive statistics were also calculated to summarize central tendencies and individual responses.
-
 ### 1.4.2 R: Statistical analysis
+
+Descriptive statistics were computed to summarize central tendencies and variability. In addition, baseline characteristics of included and excluded patients were compared to assess and limit potential selection bias.
 
 The processed dataset was then exported to R for statistical analysis. Paired comparisons between pre- and post-intervention values were performed using the Wilcoxon test.
 
 In addition, an exploratory correlation analysis between functional capacity and quality of life was conducted using Spearman’s correlation.
+
 
 # 2. How to run the project
 
