@@ -38,9 +38,9 @@ The primary aim of this study was to assess changes in functional capacity follo
 
 The secondary aim was to explore the relationship between functional performance and quality of life, assessed using the pediatric self-reported PedsQL questionnaire.
 
-## 1.3 Method
+# 2. Method
 
-### 1.3.1 Study population
+## 2.1 Study population
 
 A total of 28 children and adolescents with Marfan syndrome were initially included in the dataset.
 
@@ -55,7 +55,7 @@ After applying these criteria:
 
 This selection ensured the validity of within-subject comparisons in the paired statistical analysis
 
-### 1.3.2 Study design
+## 2.2 Study design
 
 This study is a secondary analysis of the Marfan Power dataset.
 The original protocol included 3 months of observation followed by 6 months of intervention.
@@ -65,7 +65,7 @@ Outcome measures
 knitr::include_graphics("sources/6MWT.png")
 ```
 
-Primary outcome: Functional capacity, assessed using the 6-minute walk test (6MWT)
+**Primary outcome: Functional capacity, assessed using the 6-minute walk test (6MWT)**
 Secondary outcome: Quality of life, assessed using the Pediatric Quality of Life Inventory (PedsQL)
 
 The present analysis focuses on a simplified before–after comparison using data collected at:
@@ -75,11 +75,12 @@ post-intervention (T+6 months)
 
 Functional capacity was evaluated as the main outcome, while quality of life was considered a secondary outcome.
 
-## 1.4. Aim of the code
+## 2.3 Aim of the code
 
 The objective of this code is to analyze changes in functional capacity using the 6-minute walk test (6MWT) before and after a 6-month adapted physical activity program. The analysis includes data preprocessing, visualization of individual and group-level changes, and statistical assessment using paired comparisons and correlation analysis with quality of life (PedsQL).
 
-# 2. Data analysis pipeline
+
+## 2.4 Data analysis pipeline
 
 A structured data processing pipeline was implemented to ensure consistency, transparency, and reproducibility.
 
@@ -101,11 +102,25 @@ R (statistical analysis):
 
 - Correlation analysis using Spearman’s correlation
 
+## 2.5 Statistical analysis
+
+All statistical analyses were performed using R.
+
+Descriptive statistics were used to summarize baseline characteristics of included and excluded patients. Continuous variables were described using mean ± standard deviation and median values, while categorical variables were presented as counts.
+
+Between-group comparisons at baseline were performed to assess potential selection bias. Continuous variables were compared using the Mann–Whitney U test, and categorical variables using Fisher’s exact test.
+
+Within-subject changes in functional capacity before and after the intervention were assessed using the Wilcoxon signed-rank test.
+
+The association between functional capacity and quality of life was evaluated using Spearman’s rank correlation coefficient.
+
+All statistical tests were two-sided, and a p-value < 0.05 was considered statistically significant.
+
 # 3. Results
 
 ## 3.1. Study population
 
-The code used to generate Table 2 is available in Section 8 of the R notebook analysis_R.Rmd
+The code used to generate Table 2 is available in Section 7 of the R notebook analysis_R.Rmd
 
 ```{r}
 knitr::include_graphics("figures/Table_1_Comparison_of_included_and_excluded_patients_at_baseline.png")
@@ -119,7 +134,7 @@ Overall, these results suggest that the included and excluded patients were comp
 
 ## 3.2. Functional capacity (6MWT)
 
-### 3.2.1 Data visualization and descriptive analysis is available in Section 6 of the Python notebook exploratory_analysis.ipynb
+### 3.2.1 Data visualization and descriptive analysis is available in Section 8 of the Python notebook exploratory_analysis.ipynb
 
 
 ```{r}
@@ -157,7 +172,7 @@ Given the non-normal distribution of the data and the relatively small sample si
 Overall, these results suggest a positive trend in functional capacity following the intervention, which will be further evaluated through statistical analysis.
 
 
-### 3.2.2 Sattiscal analysis for the Wilcoxon test and Spearman correlation is available in Section 9 of the R notebook analysis_R.Rmd
+### 3.2.2 Sattiscal analysis for the Wilcoxon test in Section 9 of the R notebook analysis_R.Rmd
 
 
 ```{r}
@@ -199,13 +214,14 @@ knitr::include_graphics("figures/Figure_5_Correlation_PedsQL_6MWT.png")
 ```{r}
 cat(readLines("results/spearman_correlation_results.txt"), sep = "\n")
 ```
-The relationship between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient. The analysis revealed a weak positive correlation between 6-minute walk distance and PedsQL score (ρ = 0.19), which was not statistically significant (p = 0.43) .
 
-The graphical representation supports this finding. The scatter plot shows a wide dispersion of data points across the range of values, with no clear monotonic pattern. Although a slight upward trend can be visually suggested, the loess smoothing curve remains relatively flat, indicating the absence of a strong or consistent association.
+The relationship between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient. The analysis showed no statistically significant correlation between 6-minute walk distance and PedsQL score (ρ = 0.19, p = 0.43).
 
-Furthermore, the broad confidence interval around the smoothing curve reflects substantial inter-individual variability and a high degree of uncertainty in the estimated relationship. This variability suggests that functional capacity alone does not adequately explain differences in perceived quality of life within this sample.
+The graphical representation supports this result. The scatter plot shows a wide dispersion of data points, with no clear monotonic pattern. Although a slight upward trend may be visually suggested, the loess smoothing curve remains relatively flat, indicating the absence of a consistent association.
 
-Overall, both the graphical and statistical analyses converge to indicate the absence of a meaningful association between 6MWT performance and quality of life. These results highlight the multifactorial nature of quality of life and suggest that factors beyond physical performance may play a significant role in patient-reported outcomes.
+Furthermore, the broad confidence interval around the smoothing curve reflects substantial inter-individual variability and a high level of uncertainty in the estimated relationship. This variability suggests that functional capacity alone does not adequately explain differences in perceived quality of life within this sample.
+
+Overall, both the graphical and statistical analyses indicate the absence of a meaningful association between 6MWT performance and quality of life. These findings highlight the multifactorial nature of quality of life and suggest that factors beyond physical performance may play an important role in patient-reported outcomes.
 
 
 # 4. Conclusion
