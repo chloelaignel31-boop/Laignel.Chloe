@@ -86,13 +86,19 @@ The objective of this code is to analyze changes in functional capacity using th
 A structured data processing pipeline was implemented to ensure consistency, transparency, and reproducibility.
 
 Python (data preprocessing and exploration):
+
 - Data cleaning
+
 - Computation of individual changes in 6-minute walk distance (6MWT)
+
 - Exploratory visualizations
 
 R (statistical analysis):
+
 - Paired comparisons using the Wilcoxon test
+
 - Exploratory visualization of PedsQL scores
+
 - Correlation analysis using Spearman’s correlation
 
 # 3. Results
