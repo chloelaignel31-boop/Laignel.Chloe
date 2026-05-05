@@ -6,7 +6,7 @@ By Chloé Laignel-Granier
 
 Github link : https://github.com/chloelaignel31-boop/Laignel.Chloe.git
 
-# 1. Scientific problem
+# 1. Study background and Objectives
 
 This project presents a secondary analysis of the Marfan Power dataset (Edouard et al., 2026), focusing on functional capacity and quality of life in children with Marfan syndrome.
 
@@ -206,10 +206,11 @@ Scores range from 0 to 100 (higher = better quality of life)
 The analysis of functional capacity and quality of life in children with Marfan syndrome shows that:
 
 Functional capacity significantly improved after the intervention, as indicated by the Wilcoxon signed-rank test (V = 170, p = 0.016), although inter-individual variability was observed.
-The association between functional capacity and quality of life was weak and not statistically significant (Spearman’s rho = 0.19, p = 0.43).
+No statistically significant correlation was found between functional capacity and quality of life (Spearman’s rho = 0.19, p = 0.43).
+
 Overall, the adapted physical activity program appears to improve functional capacity, while its impact on quality of life remains uncertain.
 
-These results should be interpreted with caution due to the relatively small sample size.
+These results should be interpreted with caution due to the small sample size and the variability of the data, which may fluctuate in a pediatric population.
 
 
 # 7. References
