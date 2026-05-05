@@ -120,22 +120,58 @@ Laignel_Chloe.Rmd: Final R Markdown file
 
 Laignel_Chloe.html: Final project report
 
-# 4. Requirements
+# 4. Data organization
 
-## 4.1 Python libraries
+Marfan.xlsx
+
+The dataset contains data from children and adolescents with Marfan syndrome included in the Marfan Power study.
+
+Each row corresponds to one participant and includes demographic, anthropometric, functional, and quality of life variables collected at baseline (T−3 months) and post-intervention (T+6 months).
+
+The main variables are:
+
+id: Participant identifier
+age: Age at inclusion (years)
+weight_kg: Body weight at inclusion (kg)
+height_cm: Height at inclusion (cm)
+bmi_kg_cm2: Body mass index at inclusion (kg/m²)
+
+Functional capacity (6MWT)
+6minwt_distance_traveled_m_before: Distance covered during the 6-minute walk test at baseline (meters)
+6minwt_distance_traveled_m_after: Distance covered post-intervention (meters)
+
+Cardiorespiratory parameter
+vat_before: Ventilatory anaerobic threshold at baseline (% predicted)
+vat_after: Ventilatory anaerobic threshold post-intervention (% predicted)
+
+Quality of life (PedsQL – self-reported)
+
+Scores range from 0 to 100, with higher scores indicating better perceived quality of life.
+
+pedsql_totalself_before / after: Total score
+pedsql_physiqueself_before / after: Physical dimension
+pedsql_psycosocialself_before / after: Psychosocial dimension
+pedsql_emotionself_before / after: Emotional dimension
+pedsql_relationself_before / after: Social dimension
+pedsql_ecoleself_before / after: School dimension
+
+
+# 5. Requirements
+
+## 5.1 Python libraries
 
 - pandas
 - numpy
 - matplotlib
 - seaborn
 
-## 4.2 R packages
+## 5.2 R packages
 
 - readxl
 - dplyr
 - gridExtra
 
-# 5. Conclusion
+# 6. Conclusion
 
 The analysis of functional capacity and quality of life in children with Marfan syndrome shows that:
 
@@ -143,7 +179,7 @@ Functional capacity significantly improved after the intervention, as indicated 
 The association between functional capacity and quality of life was weak and not statistically significant (Spearman’s rho = 0.19, p = 0.43).
 Overall, the adapted physical activity program appears to improve functional capacity, while its impact on quality of life remains uncertain.
 
-# 6. References
+# 7. References
 
 Edouard, T., Bajanca, F., Flumian, C., et al. (2026). *A personalized home-based exercise training program in children with Marfan and Loeys-Dietz syndromes improves aerobic exercise capacity and health-related quality of life*.
 https://pmc.ncbi.nlm.nih.gov/articles/PMC12958747/
