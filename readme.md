@@ -53,7 +53,6 @@ This selection process ensured the validity of within-subject comparisons in the
 
 Overview of the data processing and analysis pipeline: ![Pipeline](sources/pipeline.png)
 
-An overview of the data processing and analysis pipeline is presented in Figure X.
 
 A structured workflow was implemented to ensure consistency, transparency, and reproducibility of the analyses. The pipeline clearly separates data preprocessing and exploratory analysis performed in Python from statistical analyses conducted in R.
 
