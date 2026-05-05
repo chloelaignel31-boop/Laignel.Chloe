@@ -118,7 +118,7 @@ for(i in seq_along(vars)) {
 
 table_final <- do.call(rbind, table_list)
 
-# Sex comparison (Fisher's exact test)
+# Sex comparison (Fisher's test)
 p_sexe <- fisher.test(table(
   c(included_data$sexe, excluded_data$sexe),
   c(rep("Included", nrow(included_data)),
@@ -178,7 +178,7 @@ grid.arrange(
   ),
   tg,
   textGrob(
-    "* Mann–Whitney U test; † Fisher’s exact test",
+    "* Mann–Whitney test; † Fisher’s test",
     gp = gpar(fontsize = 8, fontface = "italic")
   ),
   ncol = 1,
@@ -187,7 +187,7 @@ grid.arrange(
 
 dev.off()
 ```
-Descriptive statistics were computed for included and excluded patients to assess potential selection bias. Continuous variables were summarized using mean ± standard deviation and median. Intergroup comparisons were performed using the Mann–Whitney U test for continuous variables and Fisher’s exact test for categorical variables.
+Descriptive statistics were calculated for both included and excluded patients to assess potential selection bias. Continuous variables were summarized using mean ± standard deviation and median values. Group comparisons were performed using the Mann–Whitney U test for quantitative variables and Fisher’s exact test for qualitative variables.
 
 A summary table was constructed to compare baseline characteristics between groups, with results formatted for clarity. The table was displayed in the R Markdown document and exported as a PNG for reporting.
 
@@ -253,30 +253,11 @@ pedsql_data <- included_data %>%
     )
   )
 
-# Medians calculation for each dimension and time point
-medians <- pedsql_data %>%
-  group_by(Dimension, Time) %>%
-  summarise(median = median(Score, na.rm = TRUE), .groups = "drop")
-
 # Plot
+
 p_pedsql <- ggplot(pedsql_data, aes(x = Time, y = Score, fill = Dimension)) +
   
   geom_boxplot(alpha = 0.5, outlier.shape = NA) +
-  
-  # Medians lines each dimension
-  geom_line(
-    data = medians,
-    aes(x = Time, y = median, group = Dimension, color = Dimension),
-    size = 1
-  ) +
-  
-  # Medians points
-  
-  geom_point(
-    data = medians,
-    aes(x = Time, y = median, color = Dimension),
-    size = 2
-  ) +
   
   facet_wrap(~ Dimension, nrow = 2) +
   
