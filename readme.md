@@ -53,30 +53,40 @@ This selection process ensured the validity of within-subject comparisons in the
 
 Overview of the data processing and analysis pipeline: ![Pipeline](sources/pipeline.png)
 
-A structured data processing pipeline was used to ensure consistency, transparency, and reproducibility of the analyses. This approach provided a clear transition from data preprocessing and exploration in Python to statistical analysis and interpretation in R.
+An overview of the data processing and analysis pipeline is presented in Figure X.
+
+A structured workflow was implemented to ensure consistency, transparency, and reproducibility of the analyses. The pipeline clearly separates data preprocessing and exploratory analysis performed in Python from statistical analyses conducted in R.
 
 ### 1.4.1 Python: data preprocessing and exploratory analysis
 
-Data were first imported and processed in Python. Variables were standardized and data quality checks were performed to ensure consistency.
+The raw dataset (Marfan.xlsx) was first imported into Python.
 
-The dataset was then prepared for analysis, including the selection of patients with complete data and the computation of individual changes (Δ) in 6-minute walk distance (6MWT).
+Data preprocessing included cleaning procedures, verification of data quality, and selection of patients based on data completeness. Included and excluded patients were identified according to predefined criteria.
 
-Exploratory data analysis was conducted using graphical representations such as boxplots, individual trajectories, and distribution plots to assess data distribution and visualize individual changes.
+The dataset was then transformed into a suitable format for analysis, and individual changes (Δ) in 6-minute walk distance (6MWT) were computed.
 
-### 1.4.2 R: Statistical analysis
+Exploratory data analysis was performed using graphical representations (boxplots, individual trajectories, and histograms) to assess data distribution and visualize individual changes.
 
-Descriptive statistics were computed to summarize central tendencies and variability. In addition, baseline characteristics of included and excluded patients were compared to assess and limit potential selection bias.
+Finally, cleaned and excluded datasets were exported for subsequent statistical analysis in R.
 
-The processed dataset was then exported to R for statistical analysis. Paired comparisons between pre- and post-intervention values were performed using the Wilcoxon test.
+### 1.4.2 R: statistical analysis
 
-In addition, an exploratory correlation analysis between functional capacity and quality of life was conducted using Spearman’s correlation.
+The cleaned datasets were imported into R for statistical analysis.
+
+Descriptive statistics were computed to summarize the data, and baseline characteristics of included and excluded patients were compared to assess the potential risk of selection bias.
+
+Changes in functional capacity were analyzed using a paired Wilcoxon signed-rank test.
+
+In addition, quality of life scores (PedsQL) were explored using graphical representations.
+
+Finally, the relationship between functional capacity and quality of life was assessed using Spearman’s correlation.#
 
 
 # 2. How to run the project
 
 ## 2.1 Python preprocessing and exploratory analysis
 
-Open and run : exploratory_analysis.ipynb
+Open and run the Python notebook: exploratory_analysis.ipynb
 
 This step performs data preprocessing and exploratory analysis, and generates the following outputs in the /figures folder:
 
@@ -92,7 +102,7 @@ It also exports the processed datasets for statistical analysis in the /data fol
 
 ## 2.2 Statistical analysis in R
 
-Open and run : analysis_R.Rmd
+Open and run the R notebook : analysis_R.Rmd
 
 This step performs statistical analyses and generates the following outputs in the /figures folder:
 
@@ -123,41 +133,47 @@ Laignel_Chloe.Rmd: Final R Markdown file
 
 Laignel_Chloe.html: Final project report
 
+
 # 4. Data organization
 
 Marfan.xlsx
 
 The dataset contains data from children and adolescents with Marfan syndrome included in the Marfan Power study.
 
-Each row corresponds to one participant and includes demographic, anthropometric, functional, and quality of life variables collected at baseline (T−3 months) and post-intervention (T+6 months).
+Each row corresponds to one participant and includes demographic, anthropometric, functional, and quality of life variables collected at:
 
-The main variables are:
+- baseline (T−3 months)
+- post-intervention (T+6 months)
 
-id: Participant identifier
-age: Age at inclusion (years)
-weight_kg: Body weight at inclusion (kg)
-height_cm: Height at inclusion (cm)
-bmi_kg_cm2: Body mass index at inclusion (kg/m²)
+**Main variables**
 
-Functional capacity (6MWT):
-6minwt_distance_traveled_m_before: Distance covered during the 6-minute walk test at baseline (meters)
-6minwt_distance_traveled_m_after: Distance covered post-intervention (meters)
+Demographic and anthropometric data:
+
+- id: Participant identifier
+- age: Age at inclusion (years)
+- weight_kg: Body weight at inclusion (kg)
+- height_cm: Height at inclusion (cm)
+- bmi_kg_cm2: Body mass index at inclusion (kg/m²)
+
+**Functional capacity (6MWT)**
+
+- 6minwt_distance_traveled_m_before: Distance at baseline (m)
+- 6minwt_distance_traveled_m_after: Distance post-intervention (m)
 
 Cardiorespiratory parameter:
-vat_before: Ventilatory anaerobic threshold at baseline (% predicted)
-vat_after: Ventilatory anaerobic threshold post-intervention (% predicted)
+- vat_before: Ventilatory anaerobic threshold at baseline (% predicted)
+- vat_after: Ventilatory anaerobic threshold post-intervention (% predicted)
 
-Quality of life (PedsQL – self-reported):
+**Quality of life (PedsQL – self-reported)**
 
-Scores range from 0 to 100, with higher scores indicating better perceived quality of life.
+Scores range from 0 to 100 (higher = better quality of life)
 
-pedsql_totalself_before / after: Total score
-pedsql_physiqueself_before / after: Physical dimension
-pedsql_psycosocialself_before / after: Psychosocial dimension
-pedsql_emotionself_before / after: Emotional dimension
-pedsql_relationself_before / after: Social dimension
-pedsql_ecoleself_before / after: School dimension
-
+- pedsql_totalself_before / after: Total score
+- pedsql_physiqueself_before / after: Physical dimension
+- pedsql_psycosocialself_before / after: Psychosocial dimension
+- pedsql_emotionself_before / after: Emotional dimension
+- pedsql_relationself_before / after: Social dimension
+- pedsql_ecoleself_before / after: School dimension
 
 # 5. Requirements
 
@@ -174,6 +190,7 @@ pedsql_ecoleself_before / after: School dimension
 - dplyr
 - gridExtra
 
+
 # 6. Conclusion
 
 The analysis of functional capacity and quality of life in children with Marfan syndrome shows that:
@@ -181,6 +198,9 @@ The analysis of functional capacity and quality of life in children with Marfan 
 Functional capacity significantly improved after the intervention, as indicated by the Wilcoxon signed-rank test (V = 170, p = 0.016), although inter-individual variability was observed.
 The association between functional capacity and quality of life was weak and not statistically significant (Spearman’s rho = 0.19, p = 0.43).
 Overall, the adapted physical activity program appears to improve functional capacity, while its impact on quality of life remains uncertain.
+
+These results should be interpreted with caution due to the relatively small sample size.
+
 
 # 7. References
 
