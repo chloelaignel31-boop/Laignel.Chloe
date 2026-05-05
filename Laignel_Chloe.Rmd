@@ -222,6 +222,8 @@ Overall, these findings suggest that the intervention may effectively improve fu
 
 Finally, the relatively small sample size may have limited the statistical power to detect associations. Further studies with larger cohorts are needed to better understand the relationship between functional capacity and quality of life and to confirm these findings.
 
+donnees fluctue sur l'age et le sexe, bmi en pediatrie --> plus de rigueur 
+
 
 # 5. References
 

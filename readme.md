@@ -68,7 +68,7 @@ Exploratory data analysis was performed using graphical representations (boxplot
 
 Finally, cleaned and excluded datasets were exported for subsequent statistical analysis in R.
 
-### 1.4.2 R: statistical analysis
+### 1.4.2 R: data preprocessing and statistical analysis
 
 The cleaned datasets were imported into R for statistical analysis.
 

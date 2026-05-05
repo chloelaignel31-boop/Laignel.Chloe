@@ -271,7 +271,7 @@ p_pedsql <- ggplot(pedsql_data, aes(x = Time, y = Score, fill = Dimension)) +
   ylab("Score (0–100)") +
   ggtitle("Figure 4. Distribution of PedsQL Scores Before and After Intervention") +
   
-  theme_minimal() +
+  theme_bw() +
   theme(
     strip.text = element_text(face = "bold"),
     legend.position = "none"   
