@@ -66,6 +66,7 @@ knitr::include_graphics("sources/6MWT.png")
 ```
 
 **Primary outcome: Functional capacity, assessed using the 6-minute walk test (6MWT)**
+
 Secondary outcome: Quality of life, assessed using the Pediatric Quality of Life Inventory (PedsQL)
 
 The present analysis focuses on a simplified before–after comparison using data collected at:
