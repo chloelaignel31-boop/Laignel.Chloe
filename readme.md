@@ -66,6 +66,8 @@ The dataset was then transformed into a suitable format for analysis, and indivi
 
 For Figure 1, both wide and long data formats were used depending on the visualization needs. The long format was specifically created to facilitate grouped visualizations with Seaborn (boxplots and stripplots), as this structure is more appropriate for displaying repeated measurements across timepoints. The wide format was retained to display paired individual trajectories and mean changes directly for each participant.
 
+For Table 2, the long format was used to compute grouped summary statistics across timepoints, while the wide format was retained for individual delta calculations and change classification analyses.
+
 Exploratory data analysis was performed using graphical representations (boxplots, individual trajectories, and histograms) to assess data distribution and visualize individual changes.
 
 Finally, cleaned and excluded datasets were exported in wide format for subsequent statistical analysis in R, as this format is well suited for paired before/after analyses.
