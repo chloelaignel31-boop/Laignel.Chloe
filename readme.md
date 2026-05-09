@@ -78,6 +78,8 @@ The cleaned datasets were imported into R for statistical analysis.
 
 Descriptive statistics were computed, and baseline characteristics of included and excluded patients were compared to assess potential selection bias.
 
+For the PedsQL visualizations, the dataset was transformed into long format to facilitate grouped visualizations with ggplot2 and to enable comparisons of repeated measurements across timepoints and quality-of-life dimensions.
+
 Inferential analyses were performed to evaluate changes in functional capacity and to explore its association with quality of life. Graphical representations were also used to support data interpretation.
 
 ## 1.5 Statistical analysis
