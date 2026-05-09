@@ -64,9 +64,11 @@ Data preprocessing included cleaning procedures, verification of data quality, a
 
 The dataset was then transformed into a suitable format for analysis, and individual changes (Δ) in 6-minute walk distance (6MWT) were computed.
 
+For Figure 1, both wide and long data formats were used depending on the visualization needs. The long format was specifically created to facilitate grouped visualizations with Seaborn (boxplots and stripplots), as this structure is more appropriate for displaying repeated measurements across timepoints. The wide format was retained to display paired individual trajectories and mean changes directly for each participant.
+
 Exploratory data analysis was performed using graphical representations (boxplots, individual trajectories, and histograms) to assess data distribution and visualize individual changes.
 
-Finally, cleaned and excluded datasets were exported for subsequent statistical analysis in R.
+Finally, cleaned and excluded datasets were exported in wide format for subsequent statistical analysis in R, as this format is well suited for paired before/after analyses.
 
 ### 1.4.2 R: data preprocessing and statistical analysis
 
