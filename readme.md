@@ -23,6 +23,9 @@ Evidence on structured exercise programs in children with MFS remains limited. T
 Research objective:
 To evaluate changes in functional capacity using the 6-minute walk test (6MWT) and to explore its association with quality of life in children with Marfan syndrome.
 
+Research question:
+Does a 6-month adapted physical activity program improve functional capacity measured by the 6-minute walk test (6MWT), and is functional capacity associated with quality of life measured by the PedsQL in pediatric patients with Marfan syndrome?
+
 ## 1.2 Aim
 
 The primary aim of this study was to assess changes in functional capacity following the intervention, using the 6-minute walk test (6MWT) as the primary outcome.
@@ -33,7 +36,14 @@ The secondary aim was to explore the relationship between functional performance
 
 ### 1.3.1 Study design
 
-This study is based on a secondary analysis of the Marfan Power dataset. The original study consisted of a 6-month home-based adapted physical activity program, including 3 months of observation followed by 3 months of intervention.
+This study is based on a secondary analysis of the Marfan Power dataset.
+The original study included a 3-month observation period followed by a 6-month home-based adapted physical activity program.
+
+Timeline of the original study:
+
+- T−3: beginning of the observation period
+- T0: beginning of the intervention
+- T+6: end of the intervention
 
 The present analysis focused on a simplified before–after comparison using data collected at baseline (T−3 months) and after the intervention (T+6 months).
 
