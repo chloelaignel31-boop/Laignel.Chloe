@@ -29,12 +29,15 @@ These limitations are partly explained by decreased muscle strength and reduced 
 
 Evidence on structured exercise programs in children with MFS remains limited. The Marfan Power study investigated a home-based adapted physical activity program and suggested improvements in functional capacity and quality of life, despite variable adherence and missing data (Edouard et al., 2026).
 
-Research objective:
+**Research objective:**
 To evaluate changes in functional capacity using the 6-minute walk test (6MWT) and to explore its association with quality of life in children with Marfan syndrome.
+
+**Research question:**
+Does a 6-month adapted physical activity program improve functional capacity measured by the 6-minute walk test (6MWT), and is functional capacity associated with quality of life measured by the PedsQL in pediatric patients with Marfan syndrome?
 
 ## 1.2 Aim
 
-The primary aim of this study was to assess changes in functional capacity following the intervention, using the 6-minute walk test (6MWT) as the primary outcome.
+**The primary aim of this study was to assess changes in functional capacity following the intervention, using the 6-minute walk test (6MWT) as the primary outcome.**
 
 The secondary aim was to explore the relationship between functional performance and quality of life, assessed using the pediatric self-reported PedsQL questionnaire.
 
@@ -50,15 +53,23 @@ For this secondary analysis, patients were selected based on data completeness a
 
 After applying these criteria:
 
-20 patients were included in the final analysis
+**20** patients were included in the final analysis
 8 patients were excluded due to missing data or loss to follow-up
 
 This selection ensured the validity of within-subject comparisons in the paired statistical analysis
 
 ## 2.2 Study design
 
-This study is a secondary analysis of the Marfan Power dataset.
-The original protocol included 3 months of observation followed by 6 months of intervention.
+This study is based on a secondary analysis of the Marfan Power dataset. The original study included a 3-month observation period followed by a 6-month home-based adapted physical activity program.
+
+Timeline of the original study:
+
+- T−3: beginning of the observation period
+
+- T0: beginning of the intervention
+
+- T+6: end of the intervention
+
 
 Outcome measures
 ```{r}
