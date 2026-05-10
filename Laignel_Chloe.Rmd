@@ -53,10 +53,11 @@ For this secondary analysis, patients were selected based on data completeness a
 
 After applying these criteria:
 
-**20** patients were included in the final analysis
-8 patients were excluded due to missing data or loss to follow-up
+- **20** patients were included in the final analysis
 
-This selection ensured the validity of within-subject comparisons in the paired statistical analysis
+- 8 patients were excluded due to missing data or loss to follow-up
+
+This selection allowed within-subject comparisons in the paired statistical analysis.
 
 ## 2.2 Study design
 
@@ -82,17 +83,12 @@ Secondary outcome: Quality of life, assessed using the Pediatric Quality of Life
 
 The present analysis focuses on a simplified before–after comparison using data collected at:
 
-baseline (T−3 months)
-post-intervention (T+6 months)
+- baseline (T−3 months)
 
-Functional capacity was evaluated as the main outcome, while quality of life was considered a secondary outcome.
-
-## 2.3 Aim of the code
-
-The objective of this code is to analyze changes in functional capacity using the 6-minute walk test (6MWT) before and after a 6-month adapted physical activity program. The analysis includes data preprocessing, visualization of individual and group-level changes, and statistical assessment using paired comparisons and correlation analysis with quality of life (PedsQL).
+- post-intervention (T+6 months)
 
 
-## 2.4 Data analysis pipeline
+## 2.3 Data analysis pipeline
 
 A structured data processing pipeline was implemented to ensure consistency, transparency, and reproducibility.
 
@@ -114,7 +110,7 @@ R (statistical analysis):
 
 - Correlation analysis using Spearman’s correlation
 
-## 2.5 Statistical analysis
+## 2.4 Statistical analysis
 
 All statistical analyses were performed using R.
 
@@ -130,9 +126,7 @@ All statistical tests were two-sided, and a p-value < 0.05 was considered statis
 
 # 3. Results
 
-## 3.1. Study population
-
-The code used to generate Table 2 is available in Section 7 of the R notebook analysis_R.Rmd
+## 3.1. Study population (Section 7 of the R notebook analysis_R.Rmd)
 
 ```{r}
 knitr::include_graphics("figures/Table_1_Comparison_of_included_and_excluded_patients_at_baseline.png")
@@ -140,13 +134,13 @@ knitr::include_graphics("figures/Table_1_Comparison_of_included_and_excluded_pat
 
 The study population was defined based on data completeness for the variables of interest at baseline (T−3) and post-intervention (T+6), resulting in the inclusion of 20 patients and the exclusion of 8 patients.
 
-A comparison of baseline characteristics between included and excluded patients was performed to assess the potential presence of selection bias (Table 2). No statistically significant differences were observed between the two groups for any of the variables considered, including age (p = 0.304), weight (p = 0.401), height (p = 0.373), body mass index (p = 0.839), 6-minute walk distance (p = 0.461), ventilatory anaerobic threshold (p = 0.381), or PedsQL score (p = 0.799). Similarly, the distribution of sex did not differ significantly between groups (p = 0.20).
+A comparison of baseline characteristics between included and excluded patients was performed to assess potential selection bias (Table 2). No statistically significant differences were observed between the two groups for any demographic or clinical variable. Similarly, sex distribution did not differ significantly between groups.
 
-Overall, these results suggest that the included and excluded patients were comparable at baseline. Therefore, the exclusion of patients due to missing data is unlikely to have introduced a significant selection bias, supporting the validity and representativeness of the analytical sample.
+Overall, these findings indicate that included and excluded patients were comparable at baseline, suggesting that exclusions related to missing data are unlikely to have introduced significant selection bias and supporting the internal validity of the analytical sample.
 
 ## 3.2. Functional capacity (6MWT)
 
-### 3.2.1 Data visualization and descriptive analysis is available in Section 8 of the Python notebook exploratory_analysis.ipynb
+### 3.2.1 Data visualization and descriptive analysis (Section 8 of the Python notebook exploratory_analysis.ipynb)
 
 
 ```{r}
@@ -169,22 +163,18 @@ knitr::include_graphics("figures/Table_2_Distribution_and_changes_in_6MWT.png")
 ```
 
 
-The exploratory analysis of functional capacity suggests an overall improvement in 6-minute walk distance following the intervention.
+Exploratory analysis of functional capacity suggests an overall increase in 6-minute walk distance following the intervention.
 
-As shown in Figure 1, most individual trajectories display an upward trend between baseline (T−3) and post-intervention (T+6), indicating that the majority of patients increased their walking distance. This is further supported by the upward shift in central tendency, as illustrated by the mean values.
+As shown in Figure 1, most patients increased their walking distance between baseline (T−3) and post-intervention (T+6). However, responses varied across individuals, with some patients showing little change or a decrease in performance.
 
-However, inter-individual variability is evident. While many patients improved, some exhibited little change or even a decrease in performance, highlighting heterogeneous responses to the intervention.
+The distribution of individual changes (Figures 2 and 3) was asymmetric and included both positive and negative values, suggesting a non-normal distribution. Descriptive statistics (Table 1) were consistent with these observations, showing a positive median individual change (+57.0 m), with 60% of patients improving after the intervention.
 
-The distribution of individual changes (Figures 2 and 3) confirms this variability. The histogram, in particular, suggests a non-normal distribution, with an asymmetric spread and the presence of both positive and negative changes. This observation justifies the use of a non-parametric statistical approach.
+Because visual inspection suggested a non-normal distribution and the sample size was relatively small, paired comparisons were performed using the Wilcoxon signed-rank test.
 
-Descriptive statistics (Table 1) support these findings. Although the median 6MWT distance slightly decreased between T−3 and T+6, the median individual change was positive (+57.0 m), and 60% of patients showed improvement, compared to 40% who experienced a decrease.
-
-Given the non-normal distribution of the data and the relatively small sample size, a paired non-parametric test (Wilcoxon signed-rank test) was chosen to assess changes in functional capacity. This approach allows for a robust evaluation of before–after differences without assuming normality, while keeping the analysis simple and appropriate for the data structure.
-
-Overall, these results suggest a positive trend in functional capacity following the intervention, which will be further evaluated through statistical analysis.
+Overall, these findings suggest a beneficial effect of the intervention on functional capacity.
 
 
-### 3.2.2 Sattiscal analysis for the Wilcoxon test in Section 9 of the R notebook analysis_R.Rmd
+### 3.2.2 Wilcoxon test analysis (Section 9 of the R notebook analysis_R.Rmd)
 
 
 ```{r}
@@ -192,31 +182,30 @@ cat(readLines("results/wilcoxon_test_results.txt"), sep = "\n")
 ```
 
 
-The paired Wilcoxon signed-rank test revealed a statistically significant difference in 6-minute walk distance between baseline (T−3) and post-intervention (T+6) (V = 170, p = 0.016).
+The paired Wilcoxon signed-rank test showed a significant increase in 6-minute walk distance between baseline (T−3) and post-intervention (T+6) (p = 0.016).
 
-This result indicates that the observed changes in functional capacity are unlikely to be due to chance and support the hypothesis of an effect of the intervention.
+This result is consistent with the graphical analysis, which showed an increase in walking distance in most patients despite some inter-individual variability.
 
-This statistical finding is consistent with the graphical analysis. As shown in Figure 1, most individual trajectories display an increase in walking distance. Similarly, the distribution of individual changes (Figures 2 and 3) is predominantly shifted above zero, indicating that the majority of patients improved.
+Overall, these findings support a positive effect of the intervention on functional capacity.
 
-Despite some inter-individual variability, with a minority of patients showing no improvement or a decrease, the overall trend remains positive. The combination of graphical exploration and statistical testing therefore supports the conclusion of a significant improvement in functional capacity following the intervention.
 
 ## 3.3. Quality of life (PedsQL)
 
-### 3.3.1 Data visualization and descriptive analysis is available in Section 10 of the R notebook analysis_R.Rmd
+### 3.3.1 Data visualization and descriptive analysis (Section 10 of the R notebook analysis_R.Rmd)
 
 ```{r}
 knitr::include_graphics("figures/Figure_4_PedsQL_Before_After.png")
 ```
 
-The boxplots show relatively high PedsQL scores across all dimensions at both time points, with moderate inter-individual variability. The dispersion appears comparable across domains, although some differences in spread are observed.
+The boxplots show relatively high PedsQL scores across all dimensions at both time points, with moderate inter-individual variability.
 
-Across all dimensions, median scores tend to be higher after the intervention compared to baseline. This pattern suggests a global improvement in perceived quality of life, although the magnitude of change varies between domains, with more pronounced shifts in physical and social dimensions.
+Median scores tended to be higher after the intervention than at baseline, suggesting an overall improvement in perceived quality of life. The largest changes were observed in the physical and social dimensions.
 
-Despite this overall positive trend, variability within each dimension remains substantial, indicating heterogeneous individual responses. This highlights the influence of individual factors on patient-reported outcomes and supports the multidimensional nature of quality of life.
+However, variability between patients remained important across all domains, suggesting that perceived quality of life may be influenced by multiple factors.
 
-Overall, this descriptive analysis suggests a general improvement in quality of life following the intervention, while emphasizing inter-individual variability. These observations will be further explored through correlation analyses with functional capacity.
+Overall, this descriptive analysis suggests a general improvement in quality of life following the intervention.
 
-### 3.3.2 Statistical analysis of the correlation between functional capacity and quality of life is available in Section 11 of the R notebook analysis_R.Rmd
+### 3.3.2 Statistical analysis of the correlation between functional capacity and quality of life (Section 11 of the R notebook analysis_R.Rmd)
 
 ```{r}
 knitr::include_graphics("figures/Figure_5_Correlation_PedsQL_6MWT.png")
@@ -227,30 +216,29 @@ knitr::include_graphics("figures/Figure_5_Correlation_PedsQL_6MWT.png")
 cat(readLines("results/spearman_correlation_results.txt"), sep = "\n")
 ```
 
-The relationship between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient. The analysis showed no statistically significant correlation between 6-minute walk distance and PedsQL score (ρ = 0.19, p = 0.43).
+The relationship between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient. No significant correlation was observed between 6-minute walk distance and PedsQL score (ρ = 0.19, p = 0.43).
 
-The graphical representation supports this result. The scatter plot shows a wide dispersion of data points, with no clear monotonic pattern. Although a slight upward trend may be visually suggested, the loess smoothing curve remains relatively flat, indicating the absence of a consistent association.
+The graphical analysis was consistent with this result. The scatter plot showed a wide dispersion of data points without a clear monotonic pattern. Although a slight upward trend could be visually suggested, the loess smoothing curve remained relatively flat.
 
-Furthermore, the broad confidence interval around the smoothing curve reflects substantial inter-individual variability and a high level of uncertainty in the estimated relationship. This variability suggests that functional capacity alone does not adequately explain differences in perceived quality of life within this sample.
+The broad confidence interval around the smoothing curve reflected substantial variability between patients, suggesting that functional capacity alone does not fully explain differences in perceived quality of life within this sample.
 
-Overall, both the graphical and statistical analyses indicate the absence of a meaningful association between 6MWT performance and quality of life. These findings highlight the multifactorial nature of quality of life and suggest that factors beyond physical performance may play an important role in patient-reported outcomes.
+Overall, these findings suggest no clear association between 6MWT performance and quality of life following the intervention.
 
 
 # 4. Conclusion
 
-This study aimed to evaluate changes in functional capacity following an adapted physical activity intervention and to explore its relationship with quality of life.
+This study aimed to evaluate changes in functional capacity following an adapted physical activity intervention and to explore its relationship with quality of life in children with Marfan syndrome.
 
-Baseline comparisons between included and excluded patients showed no significant differences in demographic or clinical characteristics, suggesting a low risk of selection bias and supporting the validity of the analytical sample.
+Baseline comparisons between included and excluded patients showed no significant demographic or clinical differences, suggesting a limited risk of selection bias.
 
-A significant improvement in functional capacity was observed after the intervention, as demonstrated by the increase in 6-minute walk distance and confirmed by the Wilcoxon signed-rank test (p = 0.016). However, notable inter-individual variability in response was observed.
+A significant increase in 6-minute walk distance was observed after the intervention, suggesting a positive effect on functional capacity, despite some inter-individual variability in response.
 
-In contrast, no statistically significant correlation was found between functional capacity and quality of life (Spearman’s ρ = 0.19, p = 0.43), indicating that improvements in physical performance were not directly reflected in self-reported quality of life.
+In contrast, no significant association was found between functional capacity and quality of life, indicating that improvements in physical performance were not necessarily reflected in self-reported quality of life.
 
-Overall, these findings suggest that the intervention may effectively improve functional capacity, while its impact on perceived quality of life remains uncertain. This discrepancy likely reflects the multifactorial nature of quality of life, which cannot be explained by physical performance alone.
+These findings suggest that adapted physical activity may improve functional capacity in pediatric patients with Marfan syndrome, while its impact on perceived quality of life remains less clear.
 
-In addition, the interpretation of the results should be made with caution, as key variables such as age, sex, and body mass index vary substantially in pediatric populations. Greater methodological rigor would have required the use of standardized measures, such as BMI z-scores, which were not available in this dataset.
+However, the results should be interpreted with caution due to the small sample size and the absence of standardized pediatric measures such as BMI z-scores. Further studies with larger cohorts are needed to better understand the relationship between functional capacity and quality of life in this population.
 
-Finally, the relatively small sample size may have limited the statistical power to detect associations. Further studies with larger cohorts are needed to better understand the relationship between functional capacity and quality of life and to confirm these findings.
 
 # 5. References
 
