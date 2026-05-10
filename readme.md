@@ -117,7 +117,7 @@ This step performs data preprocessing and exploratory analysis, and generates th
 - Figure 1. Changes in 6-Minute Walk Distance Before and After Intervention
 - Figure 2. Boxplot of Changes in 6-Minute Walk Distance
 - Figure 3. Histogram of Individual Changes in the 6-Minute Walk Test
-- Table 1. Distribution and changes in 6-minute walk distance
+- Table 2. Distribution and changes in 6-minute walk distance
 
 It also exports the processed datasets for statistical analysis in the /data folder:
 
@@ -130,7 +130,7 @@ Open and run the R notebook : analysis_R.Rmd
 
 This step performs statistical analyses and generates the following outputs in the /figures folder:
 
-- Table 2. Comparison of included and excluded patients at baseline
+- Table 1. Comparison of included and excluded patients at baseline
 - Figure 4. Distribution of PedsQL Scores Before and After Intervention
 - Figure 5. Correlation between quality of life and functional capacity (6MWT)
 
