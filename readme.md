@@ -4,8 +4,6 @@
 
 By Chloé Laignel-Granier
 
-Github link : https://github.com/chloelaignel31-boop/Laignel.Chloe.git
-
 # 1. Study background and Objectives
 
 This project presents a secondary analysis of the Marfan Power dataset (Edouard et al., 2026), focusing on functional capacity and quality of life in children with Marfan syndrome.
@@ -23,12 +21,12 @@ Evidence on structured exercise programs in children with MFS remains limited. T
 Research objective:
 To evaluate changes in functional capacity using the 6-minute walk test (6MWT) and to explore its association with quality of life in children with Marfan syndrome.
 
-Research question:
+**Research question:**
 Does a 6-month adapted physical activity program improve functional capacity measured by the 6-minute walk test (6MWT), and is functional capacity associated with quality of life measured by the PedsQL in pediatric patients with Marfan syndrome?
 
 ## 1.2 Aim
 
-The primary aim of this study was to assess changes in functional capacity following the intervention, using the 6-minute walk test (6MWT) as the primary outcome.
+**The primary aim of this study was to assess changes in functional capacity following the intervention, using the 6-minute walk test (6MWT) as the primary outcome.**
 
 The secondary aim was to explore the relationship between functional performance and quality of life, assessed using the pediatric self-reported PedsQL questionnaire.
 
