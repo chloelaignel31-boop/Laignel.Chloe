@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 ```{r}
-packages <- c("readxl", "dplyr", "gridExtra")
+packages <- c("readxl", "dplyr", "gridExtra", "tidyr", "ggplot2", "grid")
 
 for (pkg in packages) {
   if (!require(pkg, character.only = TRUE)) {
