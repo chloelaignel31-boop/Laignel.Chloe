@@ -212,7 +212,10 @@ Scores range from 0 to 100 (higher = better quality of life)
 
 - readxl
 - dplyr
+- grid
 - gridExtra
+- tidyr
+- ggplot2
 
 
 # 6. Conclusion
