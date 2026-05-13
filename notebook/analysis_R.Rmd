@@ -312,7 +312,6 @@ p_corr <- ggplot(included_data, aes(
   y = pedsql_totalself_after
 )) +
   geom_point() +
-  geom_smooth(method = "loess", se = TRUE) +
   xlab("6-Minute Walk Distance (m)") +
   ylab("PedsQL Score (0–100)") +
   ggtitle("Figure 5. Correlation Between Quality of Life and Functional Capacity measured at 6mwt ") +
