@@ -1,0 +1,14 @@
+Paired t-test (6MWT before vs after)
+
+
+	Paired t-test
+
+data:  included_data$`6minwt_distance_traveled_m_after` and included_data$`6minwt_distance_traveled_m_before`
+t = 2.7911, df = 19, p-value = 0.01165
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 10.46666 73.23334
+sample estimates:
+mean difference 
+          41.85 
+

@@ -191,8 +191,42 @@ Descriptive statistics were calculated for both included and excluded patients t
 
 A summary table was constructed to compare baseline characteristics between groups, with results formatted for clarity. The table was displayed in the R Markdown document and exported as a PNG for reporting.
 
+# Step 9. Normality assessment of 6MWT data
+```{r normality-test}
+# Normality assessment of 6MWT data
+shapiro_before <- shapiro.test(included_data$`6minwt_distance_traveled_m_before`)
+shapiro_after <- shapiro.test(included_data$`6minwt_distance_traveled_m_after`)
+shapiro_before
+shapiro_after
+```
+# Visualisation with QQ-plots
+```{r qq-plots}
+# QQ-plots for 6MWT data
+par(mfrow = c(1, 2))
+qqnorm(included_data$`6minwt_distance_traveled_m_before`, main = "QQ-Plot Before Intervention")
+qqline(included_data$`6minwt_distance_traveled_m_before`, col = "red")
+qqnorm(included_data$`6minwt_distance_traveled_m_after`, main = "QQ-Plot After Intervention")
+qqline(included_data$`6minwt_distance_traveled_m_after`, col = "red")
+```
 
-# Step 9. Comparison of 6MWT Before and After Intervention.
+
+# Step 10 Comparison of 6MWT Before and After Intervention with t-test and Wilcoxon test
+```{r t-test}
+# Paired t-test
+t_test <- t.test(
+  included_data$`6minwt_distance_traveled_m_after`,
+  included_data$`6minwt_distance_traveled_m_before`,
+  paired = TRUE
+)
+t_test
+
+# Export t-test results to a text file
+sink("../results/paired_t_test_results.txt")
+cat("Paired t-test (6MWT before vs after)\n\n")
+print(t_test)
+sink()
+```
+
 
 Due to the small sample size and the potential non-normal distribution of the data, a non-parametric paired Wilcoxon signed-rank test was used to compare 6-minute walk distance before and after the intervention.
 
@@ -218,7 +252,7 @@ sink()
 
 ```
 
-# Step 10. Visualization of the 6 dimensions of the PedsQL self-questionnaire after 6 months 
+# Step 11. Visualization of the 6 dimensions of the PedsQL self-questionnaire after 6 months 
 
 ## Boxplots of PedsQL scores before and after the intervention
 
