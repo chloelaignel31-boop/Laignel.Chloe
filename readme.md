@@ -22,7 +22,7 @@ Research objective:
 To evaluate changes in functional capacity using the 6-minute walk test (6MWT) and to explore its association with quality of life in children with Marfan syndrome.
 
 **Research question:**
-Does a 6-month adapted physical activity program improve functional capacity measured by the 6-minute walk test (6MWT), and is functional capacity associated with quality of life measured by the PedsQL in pediatric patients with Marfan syndrome?
+Does a 6-month adapted physical activity program improve functional capacity, as assessed by the 6-minute walk test (6MWT), and is functional capacity associated with quality of life measured by the PedsQL questionnaire in pediatric patients with Marfan syndrome?
 
 ## 1.2 Aim
 
@@ -88,6 +88,8 @@ Descriptive statistics were computed, and baseline characteristics of included a
 
 For the PedsQL visualizations, the dataset was transformed into long format to facilitate grouped visualizations with ggplot2 and to enable comparisons of repeated measurements across timepoints and quality-of-life dimensions.
 
+The normality of paired differences in 6-minute walk distance (Δ6MWT) was explored using a Shapiro–Wilk test and QQ-plot assessment before inferential analyses.
+
 Inferential analyses were performed to evaluate changes in functional capacity and to explore its association with quality of life. Graphical representations were also used to support data interpretation.
 
 ## 1.5 Statistical analysis
@@ -98,7 +100,7 @@ Continuous variables were described using mean ± standard deviation and median 
 
 Baseline comparisons between included and excluded patients were conducted using the Mann–Whitney U test for continuous variables and Fisher’s exact test for categorical variables.
 
-Changes in functional capacity before and after the intervention were assessed using the Wilcoxon signed-rank test.
+Changes in functional capacity before and after the intervention were assessed using both a paired t-test and a Wilcoxon signed-rank test. Due to the small sample size and the heterogeneity of individual responses, the Wilcoxon signed-rank test was retained as the primary method for interpretation.
 
 The association between functional capacity and quality of life was evaluated using Spearman’s rank correlation coefficient.
 
@@ -129,11 +131,14 @@ Open and run the R notebook : analysis_R.Rmd
 This step performs statistical analyses and generates the following outputs in the /figures folder:
 
 - Table 1. Comparison of included and excluded patients at baseline
-- Figure 4. Distribution of PedsQL Scores Before and After Intervention
-- Figure 5. Correlation between quality of life and functional capacity (6MWT)
+- Figure 4. QQplot Delta 6MWT
+- Figure 5. Distribution of PedsQL Scores Before and After Intervention
+- Figure 6. Correlation between quality of life and functional capacity (6MWT)
 
 Statistical results are saved in the /results folder:
 
+- Shapiro test results
+- Paired T test results
 - Wilcoxon test results
 - Spearman correlation results
 
@@ -147,7 +152,7 @@ figures/ : All generated figures and tables
 
 notebooks/ : exploratory_analysis.ipynb (Python) and analysis_R.Rmd (R)
 
-results/ : Statistical outputs (Wilcoxon test and Spearman correlation)
+results/ : Statistical outputs 
 
 sources/: includes the reference article, the 6MWT illustration, and the pipeline diagram used in this project.
 
@@ -220,14 +225,15 @@ Scores range from 0 to 100 (higher = better quality of life)
 
 # 6. Conclusion
 
-The analysis of functional capacity and quality of life in children with Marfan syndrome shows that:
+The analysis of functional capacity and quality of life in children with Marfan syndrome suggests that the adapted physical activity program improved functional capacity after intervention.
 
-Functional capacity significantly improved after the intervention, as indicated by the Wilcoxon signed-rank test (V = 170, p = 0.016), although inter-individual variability was observed.
-No statistically significant correlation was found between functional capacity and quality of life (Spearman’s rho = 0.19, p = 0.43).
+Both the Wilcoxon signed-rank test (V = 170, p = 0.016) and the paired t-test (t = 2.79, p = 0.012) showed a significant increase in 6-minute walk distance, despite substantial inter-individual variability.
 
-Overall, the adapted physical activity program appears to improve functional capacity, while its impact on quality of life remains uncertain.
+In contrast, no statistically significant association was found between functional capacity and quality of life (Spearman’s rho = 0.19, p = 0.43).
 
-These results should be interpreted with caution due to the small sample size and the variability of the data, which may fluctuate in a pediatric population.
+Overall, these findings suggest that adapted physical activity may improve functional capacity in pediatric patients with Marfan syndrome, while its impact on perceived quality of life remains less clear.
+
+These results should be interpreted with caution due to the small sample size, the variability of individual responses, and the absence of standardized pediatric measures such as BMI z-scores.
 
 
 # 7. References
