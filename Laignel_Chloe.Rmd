@@ -173,9 +173,20 @@ Because visual inspection suggested a non-normal distribution and the sample siz
 
 Overall, these findings suggest a beneficial effect of the intervention on functional capacity.
 
+### 3.2.2 Normality test analysis (Section 9 of the R notebook analysis_R.Rmd)
+```{r}
+cat(readLines("results/shapiro_test_results.txt"), sep = "\n")
+knitr::include_graphics("figures/Figure_4_QQ_plot_Delta_6MWT.png")
+```
+The normality of paired differences (Δ6MWT) was explored using a Shapiro–Wilk test and QQ-plot assessment.
 
-### 3.2.2 Wilcoxon test analysis and T-test analysis (Section 10 of the R notebook analysis_R.Rmd)
+The Shapiro–Wilk test did not show a significant deviation from normality (W = 0.93, p = 0.16). The QQ-plot suggested an approximately normal distribution, although some deviations were observed in the upper tail, reflecting heterogeneous individual responses and a few larger improvements.
 
+### 3.2.3 Wilcoxon test analysis and T-test analysis (Section 10 of the R notebook analysis_R.Rmd)
+
+A paired comparison of 6-minute walk distance before and after the intervention was performed in included patients using both a paired t-test and a Wilcoxon signed-rank test.
+
+Given the small sample size and the inter-individual variability observed in exploratory analyses, the Wilcoxon signed-rank test was retained as the primary method for statistical interpretation.
 
 ```{r}
 cat(readLines("results/wilcoxon_test_results.txt"), sep = "\n")
@@ -187,17 +198,18 @@ cat(readLines("results/paired_t_test_results.txt"), sep = "\n")
 
 The paired Wilcoxon signed-rank test showed a significant increase in 6-minute walk distance between baseline (T−3) and post-intervention (T+6) (p = 0.016).
 
-This result is consistent with the graphical analysis, which showed an increase in walking distance in most patients despite some inter-individual variability.
+A paired t-test performed as a complementary parametric analysis also showed a significant improvement after intervention (t = 2.79, df = 19, p = 0.012), with a mean increase of 41.9 meters (95% CI [10.5 ; 73.2]).
+
+These results are consistent with the graphical analysis, which showed an increase in walking distance in most patients despite some inter-individual variability.
 
 Overall, these findings support a positive effect of the intervention on functional capacity.
 
-
 ## 3.3. Quality of life (PedsQL)
 
-### 3.3.1 Data visualization and descriptive analysis (Section 10 of the R notebook analysis_R.Rmd)
+### 3.3.1 Data visualization and descriptive analysis (Section 11 of the R notebook analysis_R.Rmd)
 
 ```{r}
-knitr::include_graphics("figures/Figure_4_PedsQL_Before_After.png")
+knitr::include_graphics("figures/Figure_5_PedsQL_Before_After.png")
 ```
 
 The boxplots show relatively high PedsQL scores across all dimensions at both time points, with moderate inter-individual variability.
@@ -208,10 +220,12 @@ However, variability between patients remained important across all domains, sug
 
 Overall, this descriptive analysis suggests a general improvement in quality of life following the intervention.
 
-### 3.3.2 Statistical analysis of the correlation between functional capacity and quality of life (Section 11 of the R notebook analysis_R.Rmd)
+### 3.3.2 Statistical analysis of the correlation between functional capacity and quality of life (Section 12 of the R notebook analysis_R.Rmd)
+
+Spearman’s rank correlation coefficient was used as a non-parametric approach appropriate for the small sample size and the exploratory nature of the analysis.
 
 ```{r}
-knitr::include_graphics("figures/Figure_5_Correlation_PedsQL_6MWT.png")
+knitr::include_graphics("figures/Figure_6_Correlation_PedsQL_6MWT.png")
 ```
 
 
@@ -234,13 +248,15 @@ This study aimed to evaluate changes in functional capacity following an adapted
 
 Baseline comparisons between included and excluded patients showed no significant demographic or clinical differences, suggesting a limited risk of selection bias.
 
-A significant increase in 6-minute walk distance was observed after the intervention, suggesting a positive effect on functional capacity, despite some inter-individual variability in response.
+Both the paired Wilcoxon signed-rank test and the paired t-test showed a significant increase in 6-minute walk distance after the intervention, supporting a positive effect on functional capacity despite some inter-individual variability in response.
+
+The median improvement in 6MWT was +57 meters, while the paired t-test showed a mean increase of 41.9 meters after intervention.
 
 In contrast, no significant association was found between functional capacity and quality of life, indicating that improvements in physical performance were not necessarily reflected in self-reported quality of life.
 
 These findings suggest that adapted physical activity may improve functional capacity in pediatric patients with Marfan syndrome, while its impact on perceived quality of life remains less clear.
 
-However, the results should be interpreted with caution due to the small sample size and the absence of standardized pediatric measures such as BMI z-scores. Further studies with larger cohorts are needed to better understand the relationship between functional capacity and quality of life in this population.
+However, the results should be interpreted with caution due to the small sample size, inter-individual variability, and the absence of standardized pediatric measures such as BMI z-scores. Further studies with larger cohorts are needed to better understand the relationship between functional capacity and quality of life in this population.
 
 
 # 5. References

@@ -326,9 +326,9 @@ ggsave(
 
 # Step 12. Physical performance correlation – quality of life
 
-The association between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient, due to the non-normal distribution of the data.
+The association between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient, a non-parametric method considered appropriate given the small sample size and the potential heterogeneity of the data.
 
-The analysis was performed between 6-minute walk distance and PedsQL score.
+The analysis was performed between 6-minute walk distance and PedsQL scores at post-intervention (T+6).
 
 ```{r}
 # Spearman correlation
