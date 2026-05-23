@@ -213,16 +213,19 @@ qqnorm(included_data$delta_6mwt,
        main = "QQ-Plot of Δ6MWT")
 qqline(included_data$delta_6mwt, col = "red")
 # Export QQ-plot
-ggsave(
-  "../figures/Figure_4_QQ-Plot_of_Δ6MWT.png",
-  plot = last_plot(),
-  width = 8,
-  height = 6
-)
+png("../figures/Figure_4_QQ_plot_Delta_6MWT.png", width = 900, height = 600, res = 150)
+qqnorm(included_data$delta_6mwt,
+       main = "Figure 4. QQ-Plot of Δ6MWT")
+qqline(included_data$delta_6mwt, col = "red")
+dev.off()
 ```
 
+# Step 10 Comparison of 6MWT Before and After Intervention Using Paired t-test and Wilcoxon Test
 
-# Step 10 Comparison of 6MWT Before and After Intervention with t-test and Wilcoxon test
+A paired comparison of 6-minute walk distance before and after the intervention was performed in included patients using both a paired t-test and a Wilcoxon signed-rank test.
+
+Normality of paired differences was explored using a Shapiro–Wilk test and QQ-plot assessment. Although no significant deviation from normality was detected, the Wilcoxon signed-rank test was retained for the primary interpretation because of the small sample size and the heterogeneity of individual responses.
+
 ```{r t-test}
 # Paired t-test
 t_test <- t.test(
@@ -238,12 +241,6 @@ cat("Paired t-test (6MWT before vs after)\n\n")
 print(t_test)
 sink()
 ```
-
-
-Due to the small sample size and the potential non-normal distribution of the data, a non-parametric paired Wilcoxon signed-rank test was used to compare 6-minute walk distance before and after the intervention.
-
-A paired comparison of 6-minute walk distance before and after the intervention was performed in included patients.
-
 
 ```{r wilcoxon-test}
 
@@ -309,7 +306,7 @@ p_pedsql <- ggplot(pedsql_data, aes(x = Time, y = Score, fill = Dimension)) +
   
   xlab("") +
   ylab("Score (0–100)") +
-  ggtitle("Figure 4. Distribution of PedsQL Scores Before and After Intervention") +
+  ggtitle("Figure 5. Distribution of PedsQL Scores Before and After Intervention") +
   
   theme_bw() +
   theme(
@@ -320,14 +317,14 @@ p_pedsql
 
 # Export
 ggsave(
-  "../figures/Figure_4_PedsQL_Before_After.png",
+  "../figures/Figure_5_PedsQL_Before_After.png",
   plot = p_pedsql,
   width = 8,
   height = 6
 )
 ```
 
-# Step 11. Physical performance correlation – quality of life
+# Step 12. Physical performance correlation – quality of life
 
 The association between functional capacity and quality of life was assessed using Spearman’s rank correlation coefficient, due to the non-normal distribution of the data.
 
@@ -360,14 +357,14 @@ p_corr <- ggplot(included_data, aes(
   geom_point() +
   xlab("6-Minute Walk Distance (m)") +
   ylab("PedsQL Score (0–100)") +
-  ggtitle("Figure 5. Correlation Between Quality of Life and Functional Capacity measured at 6mwt ") +
+  ggtitle("Figure 6. Correlation Between Quality of Life and Functional Capacity measured at 6mwt ") +
   theme_minimal()
 
 p_corr
 
 # Export PDF
 ggsave(
-  "../figures/Figure_5_Correlation_PedsQL_6MWT.png",
+  "../figures/Figure_6_Correlation_PedsQL_6MWT.png",
   plot = p_corr,
   width = 8,
   height = 6
