@@ -191,22 +191,34 @@ Descriptive statistics were calculated for both included and excluded patients t
 
 A summary table was constructed to compare baseline characteristics between groups, with results formatted for clarity. The table was displayed in the R Markdown document and exported as a PNG for reporting.
 
-# Step 9. Normality assessment of 6MWT data
+# Step 9. Normality assessment of Δ 6MWT data
 ```{r normality-test}
-# Normality assessment of 6MWT data
-shapiro_before <- shapiro.test(included_data$`6minwt_distance_traveled_m_before`)
-shapiro_after <- shapiro.test(included_data$`6minwt_distance_traveled_m_after`)
-shapiro_before
-shapiro_after
+# Normality assessment of Δ 6MWT data
+included_data$delta_6mwt <- included_data$`6minwt_distance_traveled_m_after` -
+                            included_data$`6minwt_distance_traveled_m_before`
+# Shapiro test on paired differences
+shapiro_delta <- shapiro.test(included_data$delta_6mwt)
+shapiro_delta
+# Export Shapiro test results to a text file
+sink("../results/shapiro_test_results.txt")
+cat("Shapiro-Wilk Test for Normality of Paired Differences (6MWT)\n\n")
+print(shapiro_delta)
+sink()
 ```
+
 # Visualisation with QQ-plots
 ```{r qq-plots}
 # QQ-plots for 6MWT data
-par(mfrow = c(1, 2))
-qqnorm(included_data$`6minwt_distance_traveled_m_before`, main = "QQ-Plot Before Intervention")
-qqline(included_data$`6minwt_distance_traveled_m_before`, col = "red")
-qqnorm(included_data$`6minwt_distance_traveled_m_after`, main = "QQ-Plot After Intervention")
-qqline(included_data$`6minwt_distance_traveled_m_after`, col = "red")
+qqnorm(included_data$delta_6mwt,
+       main = "QQ-Plot of Δ6MWT")
+qqline(included_data$delta_6mwt, col = "red")
+# Export QQ-plot
+ggsave(
+  "../figures/Figure_4_QQ-Plot_of_Δ6MWT.png",
+  plot = last_plot(),
+  width = 8,
+  height = 6
+)
 ```
 
 

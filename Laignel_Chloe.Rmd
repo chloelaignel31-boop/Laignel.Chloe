@@ -174,11 +174,14 @@ Because visual inspection suggested a non-normal distribution and the sample siz
 Overall, these findings suggest a beneficial effect of the intervention on functional capacity.
 
 
-### 3.2.2 Wilcoxon test analysis (Section 9 of the R notebook analysis_R.Rmd)
+### 3.2.2 Wilcoxon test analysis and T-test analysis (Section 10 of the R notebook analysis_R.Rmd)
 
 
 ```{r}
 cat(readLines("results/wilcoxon_test_results.txt"), sep = "\n")
+```
+```{r}
+cat(readLines("results/paired_t_test_results.txt"), sep = "\n")
 ```
 
 

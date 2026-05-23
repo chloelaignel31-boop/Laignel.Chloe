@@ -1,0 +1,8 @@
+Shapiro-Wilk Test for Normality of Paired Differences (6MWT)
+
+
+	Shapiro-Wilk normality test
+
+data:  included_data$delta_6mwt
+W = 0.93123, p-value = 0.1631
+
