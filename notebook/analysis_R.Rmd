@@ -163,10 +163,15 @@ tg <- tableGrob(
   rows = NULL,
   theme = ttheme_minimal(  
     core = list(
-      fg_params = list(fontsize = 9)
+      fg_params = list(
+        fontfamily = "Times New Roman",
+        fontsize = 10)
     ),
     colhead = list(
-      fg_params = list(fontsize = 10, fontface = "bold")
+      fg_params = list(
+        fontfamily = "Times New Roman",
+        fontsize = 10, 
+        fontface = "bold")
     )
   )
 )
@@ -174,12 +179,12 @@ tg <- tableGrob(
 grid.arrange(
   textGrob(
     "Table 1. Comparison of included and excluded patients at baseline",
-    gp = gpar(fontsize = 10, fontface = "bold")
+    gp = gpar(fontfamily = "Times New Roman", fontsize = 12, fontface = "bold")
   ),
   tg,
   textGrob(
     "* Mann–Whitney test; † Fisher’s test",
-    gp = gpar(fontsize = 8, fontface = "italic")
+    gp = gpar(fontfamily = "Times New Roman", fontsize = 12, fontface = "italic")
   ),
   ncol = 1,
   heights = c(0.2, 5, 0.3)
@@ -207,17 +212,83 @@ sink()
 ```
 
 # Visualisation with QQ-plots
+
 ```{r qq-plots}
-# QQ-plots for 6MWT data
-qqnorm(included_data$delta_6mwt,
-       main = "QQ-Plot of Δ6MWT")
-qqline(included_data$delta_6mwt, col = "red")
+
+# Remove missing values
+delta_clean <- na.omit(included_data$delta_6mwt)
+
+
 # Export QQ-plot
-png("../figures/Figure_4_QQ_plot_Delta_6MWT.png", width = 900, height = 600, res = 150)
-qqnorm(included_data$delta_6mwt,
-       main = "Figure 4. QQ-Plot of Δ6MWT")
-qqline(included_data$delta_6mwt, col = "red")
+
+png(
+  "../figures/Figure_4_QQ_plot_Delta_6MWT.png",
+  width = 6,
+  height = 5,
+  units = "in",
+  res = 300
+)
+
+# Global graphical parameters
+par(
+  family = "Times New Roman",
+  cex.main = 1,
+  cex.lab = 1,
+  cex.axis = 1
+)
+
+# QQ-plot
+qqnorm(
+  delta_clean,
+  
+  main = paste0(
+    "Figure 4. QQ-Plot of Δ6MWT (n = ",
+    length(delta_clean),
+    ")"
+  ),
+  
+  xlab = "Theoretical Quantiles",
+  ylab = "Sample Quantiles"
+)
+
+# Reference line
+qqline(
+  delta_clean,
+  col = "red",
+  lwd = 2
+)
+
+# Close PNG device
 dev.off()
+
+# Display plot in RStudio
+
+par(
+  family = "serif",
+  cex.main = 1,
+  cex.lab = 1,
+  cex.axis = 1
+)
+
+qqnorm(
+  delta_clean,
+  
+  main = paste0(
+    "Figure 4. QQ-Plot of Δ6MWT (n = ",
+    length(delta_clean),
+    ")"
+  ),
+  
+  xlab = "Theoretical Quantiles",
+  ylab = "Sample Quantiles"
+)
+
+qqline(
+  delta_clean,
+  col = "red",
+  lwd = 2
+)
+
 ```
 
 # Step 10 Comparison of 6MWT Before and After Intervention Using Paired t-test and Wilcoxon Test
@@ -306,9 +377,9 @@ p_pedsql <- ggplot(pedsql_data, aes(x = Time, y = Score, fill = Dimension)) +
   
   xlab("") +
   ylab("Score (0–100)") +
-  ggtitle("Figure 5. Distribution of PedsQL Scores Before and After Intervention") +
+  ggtitle("Figure 5. Distribution of PedsQL Scores Before and After Intervention (n = 20)") +
   
-  theme_bw() +
+  theme_bw(base_family = "Times New Roman", base_size = 12) +
   theme(
     strip.text = element_text(face = "bold"),
     legend.position = "none"   
@@ -319,8 +390,8 @@ p_pedsql
 ggsave(
   "../figures/Figure_5_PedsQL_Before_After.png",
   plot = p_pedsql,
-  width = 8,
-  height = 6
+  width = 7,
+  height = 5
 )
 ```
 
@@ -357,8 +428,14 @@ p_corr <- ggplot(included_data, aes(
   geom_point() +
   xlab("6-Minute Walk Distance (m)") +
   ylab("PedsQL Score (0–100)") +
-  ggtitle("Figure 6. Correlation Between Quality of Life and Functional Capacity measured at 6mwt ") +
-  theme_minimal()
+  ggtitle("Figure 6. Correlation Between Quality of Life and Functional Capacity measured at 6mwt (n = 20) ") +
+  theme_bw(base_family = "Times New Roman", base_size = 11) +
+theme(
+    plot.title = element_text(
+      face = "bold",
+      size = 11
+    )
+  )
 
 p_corr
 
