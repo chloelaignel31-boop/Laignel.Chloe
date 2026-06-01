@@ -218,9 +218,7 @@ sink()
 # Remove missing values
 delta_clean <- na.omit(included_data$delta_6mwt)
 
-
 # Export QQ-plot
-
 png(
   "../figures/Figure_4_QQ_plot_Delta_6MWT.png",
   width = 6,
@@ -230,10 +228,9 @@ png(
   type = "cairo"
 )
 
-# Global graphical parameters
+# Graphical parameters
 par(
-  family = "Times New Roman",
-  cex.main = 1,
+  family = "serif",
   cex.lab = 1,
   cex.axis = 1
 )
@@ -241,15 +238,20 @@ par(
 # QQ-plot
 qqnorm(
   delta_clean,
-  
+  main = "",
+  xlab = "Theoretical Quantiles",
+  ylab = "Sample Quantiles"
+)
+
+# Title
+title(
   main = paste0(
-    "Figure 4. QQ-Plot of Δ6MWT (n = ",
+    "Figure 4. Q-Q Plot of Δ6MWT (n = ",
     length(delta_clean),
     ")"
   ),
-  
-  xlab = "Theoretical Quantiles",
-  ylab = "Sample Quantiles"
+  font.main = 1,   # normal (not bold)
+  cex.main = 1     # approximately 12 pt
 )
 
 # Reference line
@@ -263,28 +265,27 @@ qqline(
 dev.off()
 
 # Display plot in RStudio
-
 par(
-  family = "Times New Roman",
-  font.main = 1,
-  cex.main = 1.6,
+  family = "serif",
   cex.lab = 1,
   cex.axis = 1
 )
 
 qqnorm(
   delta_clean,
-  
+  main = "",
+  xlab = "Theoretical Quantiles",
+  ylab = "Sample Quantiles"
+)
+
+title(
   main = paste0(
-    "Figure 4. QQ-Plot of Δ6MWT (n = ",
+    "Figure 4. Q-Q Plot of Δ6MWT (n = ",
     length(delta_clean),
     ")"
   ),
   font.main = 1,
-  cex.main = 1.6,
-  family = "Times New Roman",
-  xlab = "Theoretical Quantiles",
-  ylab = "Sample Quantiles"
+  cex.main = 1
 )
 
 qqline(
@@ -292,7 +293,6 @@ qqline(
   col = "red",
   lwd = 2
 )
-
 ```
 
 # Step 10 Comparison of 6MWT Before and After Intervention Using Paired t-test and Wilcoxon Test
