@@ -231,7 +231,7 @@ png(
 
 # Global graphical parameters
 par(
-  family = "Times New Roman",
+  family = "Times New Roman", fontface = "plain",
   cex.main = 1,
   cex.lab = 1,
   cex.axis = 1
@@ -264,8 +264,9 @@ dev.off()
 # Display plot in RStudio
 
 par(
-  family = "serif",
-  cex.main = 1,
+  family = "Times New Roman",
+  font.main = 1,
+  cex.main = 1.6,
   cex.lab = 1,
   cex.axis = 1
 )
