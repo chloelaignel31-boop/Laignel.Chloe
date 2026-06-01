@@ -225,7 +225,6 @@ png(
   height = 5,
   units = "in",
   res = 300,
-  type = "cairo"
 )
 
 # Graphical parameters
