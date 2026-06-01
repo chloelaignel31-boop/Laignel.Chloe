@@ -220,7 +220,7 @@ delta_clean <- na.omit(included_data$delta_6mwt)
 
 # Export QQ-plot
 png(
-  "../figures/Figure_4_QQ_plot_Delta_6MWT.png",
+  "../figures/Figure_4_QQ_plot_Δ_6MWT.png",
   width = 6,
   height = 5,
   units = "in",
@@ -280,7 +280,7 @@ qqnorm(
 
 title(
   main = paste0(
-    "Figure 4. Q-Q Plot of Δ6MWT (n = ",
+        "Figure 4. Q-Q Plot of Δ6MWT (n = ",
     length(delta_clean),
     ")"
   ),
