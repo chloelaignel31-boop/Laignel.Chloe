@@ -179,7 +179,7 @@ tg <- tableGrob(
 grid.arrange(
   textGrob(
     "Table 1. Comparison of included and excluded patients at baseline",
-    gp = gpar(fontfamily = "Times New Roman", fontsize = 12, fontface = "bold")
+    gp = gpar(fontfamily = "Times New Roman", fontsize = 12, fontface = "plain")
   ),
   tg,
   textGrob(
