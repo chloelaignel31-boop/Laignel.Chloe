@@ -433,7 +433,7 @@ p_corr <- ggplot(included_data, aes(
   theme_bw(base_family = "Times New Roman", base_size = 11) +
 theme(
     plot.title = element_text(
-      face = "bold",
+      face = "plain",
       size = 11
     )
   )
