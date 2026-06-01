@@ -280,7 +280,7 @@ qqnorm(
     ")"
   ),
   font.main = 1,
-  cex.main = 1.6,
+  cex.main = 1,
   family = "Times New Roman",
   xlab = "Theoretical Quantiles",
   ylab = "Sample Quantiles"
