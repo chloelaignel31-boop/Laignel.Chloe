@@ -194,11 +194,14 @@ cat(readLines("results/wilcoxon_test_results.txt"), sep = "\n")
 ```{r}
 cat(readLines("results/paired_t_test_results.txt"), sep = "\n")
 ```
+```{r}
+cat(readLines("results/effect_size_cohen_d.txt"), sep = "\n")
+```
 
 
 The paired Wilcoxon signed-rank test showed a significant increase in 6-minute walk distance between baseline (T−3) and post-intervention (T+6) (p = 0.016).
 
-A paired t-test performed as a complementary parametric analysis also showed a significant improvement after intervention (t = 2.79, df = 19, p = 0.012), with a mean increase of 41.9 meters (95% CI [10.5 ; 73.2]).
+A paired t-test performed as a complementary parametric analysis also showed a significant improvement after intervention (t = 2.79, df = 19, p = 0.012), with a mean increase of 41.9 meters (95% CI [10.5 ; 73.2]) and a moderate effect size (Cohen's d = 0.62).
 
 These results are consistent with the graphical analysis, which showed an increase in walking distance in most patients despite some inter-individual variability.
 

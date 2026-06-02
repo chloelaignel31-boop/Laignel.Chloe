@@ -315,6 +315,19 @@ cat("Paired t-test (6MWT before vs after)\n\n")
 print(t_test)
 sink()
 ```
+```{r}
+# Effect size (Cohen's d)
+mean_diff <- mean(included_data$delta_6mwt, na.rm = TRUE)
+sd_diff <- sd(included_data$delta_6mwt, na.rm = TRUE)
+cohen_d <- mean_diff / sd_diff
+cohen_d
+# Export effect size to a text file
+sink("../results/effect_size_cohen_d.txt")
+cat("Effect Size (Cohen's d) for Paired t-test (6MWT)\n\n")
+cat("Cohen's d:", round(cohen_d, 3))
+sink()
+```
+
 
 ```{r wilcoxon-test}
 
