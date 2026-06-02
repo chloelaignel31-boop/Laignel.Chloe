@@ -1,0 +1,3 @@
+Effect Size (Cohen's d) for Paired t-test (6MWT)
+
+Cohen's d: 0.624
