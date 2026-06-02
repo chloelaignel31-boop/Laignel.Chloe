@@ -100,7 +100,7 @@ Continuous variables were described using mean ± standard deviation and median 
 
 Baseline comparisons between included and excluded patients were conducted using the Mann–Whitney U test for continuous variables and Fisher’s exact test for categorical variables.
 
-Changes in functional capacity before and after the intervention were assessed using both a paired t-test and a Wilcoxon signed-rank test. Due to the small sample size and the heterogeneity of individual responses, the Wilcoxon signed-rank test was retained as the primary method for interpretation.
+Changes in functional capacity before and after the intervention were assessed using both a paired t-test and a Wilcoxon signed-rank test. Due to the small sample size and the heterogeneity of individual responses, the Wilcoxon signed-rank test was retained as the primary method for interpretation. Effect sizes (Cohen’s d) were calculated to quantify the magnitude of the observed changes in functional capacity.
 
 The association between functional capacity and quality of life was evaluated using Spearman’s rank correlation coefficient.
 
@@ -139,6 +139,7 @@ Statistical results are saved in the /results folder:
 
 - Shapiro test results
 - Paired T test results
+- Cohen's d effect size results
 - Wilcoxon test results
 - Spearman correlation results
 
